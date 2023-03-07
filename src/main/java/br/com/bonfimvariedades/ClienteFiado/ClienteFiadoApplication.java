@@ -18,5 +18,4 @@ public class ClienteFiadoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClienteFiadoApplication.class, args);
 	}
-
 }
