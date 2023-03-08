@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.ClienteFiado;
+package br.com.bonfimvariedades.clientefiado;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
