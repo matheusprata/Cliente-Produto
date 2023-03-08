@@ -8,7 +8,13 @@ spring:
     username: root
     password: 123456
     driverClassName: org.mariadb.jdbc.Driver
+    
+jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 
 springdoc:
   swagger-ui:
-    path:/public/swagger  
+    path: /public/swagger 
