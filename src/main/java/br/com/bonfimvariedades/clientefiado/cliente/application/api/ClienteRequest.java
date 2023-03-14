@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.bonfimvariedades.clientefiado.cliente.domain.EstadoCivil;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.Sexo;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -27,4 +28,5 @@ public class ClienteRequest {
 	private String cpf;
 	@NotNull
 	private Boolean aceitaTermos;
+	private EstadoCivil estadoCivil;
 }
