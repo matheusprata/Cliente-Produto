@@ -1,30 +1,12 @@
 package br.com.bonfimvariedades.clientefiado.cliente.application.api;
 
-import java.time.LocalDate;
+import java.util.UUID;
 
-import org.hibernate.validator.constraints.br.CPF;
-
-import br.com.bonfimvariedades.clientefiado.cliente.domain.Sexo;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Value;
 
 @Value
+@Builder
 public class ClienteResponse {
-	@NotBlank
-	private String nomeCompleto;
-	@NotBlank
-	@Email
-	private String email;
-	@NotBlank
-	private String celular;
-	private String telefone;
-	private Sexo sexo;
-	@NotNull
-	private LocalDate dataNascimento;
-	@CPF
-	private String cpf;
-	@NotNull
-	private Boolean aceitaTermos;
+	private UUID idCliente;
 }
