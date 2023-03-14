@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,7 @@ import lombok.NoArgsConstructor;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(columnDefinition = "uuid", name = "idCliente", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
