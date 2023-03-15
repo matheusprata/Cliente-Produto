@@ -1,5 +1,7 @@
 package br.com.bonfimvariedades.clientefiado.cliente.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bonfimvariedades.clientefiado.cliente.application.service.ClienteService;
@@ -18,6 +20,14 @@ public class ClienteController implements ClienteApi {
 		ClienteResponse clienteCriado = clienteService.criaCliente(clienteRequest);
 		log.info("[finaliza] ClienteController - postCliente");
 		return clienteCriado;
+	}
+
+	@Override
+	public List<ClienteListResponse> getTodosClientes() {
+		log.info("[inicia] - ClienteController - getTodosClientes");
+		
+		log.info("[inicia] - ClienteController - getTodosClientes");
+		return null;
 	}
 
 }

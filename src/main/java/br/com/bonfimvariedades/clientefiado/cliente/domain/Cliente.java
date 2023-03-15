@@ -34,7 +34,8 @@ import lombok.NoArgsConstructor;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Column(columnDefinition = "uuid", name = "idCliente", updatable = false, unique = true, nullable = false)
+	// @Column(columnDefinition = "uuid", name = "idCliente", updatable = false,
+	// unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
@@ -47,7 +48,7 @@ public class Cliente {
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@NotNull(message = "Tipo pessoa é obrigatório")
-    @Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	private TipoPessoa tipoPessoa;
 	private LocalDate dataNascimento;
 	@Enumerated(EnumType.STRING)
@@ -55,12 +56,12 @@ public class Cliente {
 	@NotBlank(message = "Cpf/Cnpj Obrigatório!")
 	@CPF(groups = PessoaFisica.class)
 	@CNPJ(groups = PessoaJuridica.class)
-	@Column(name =  "cpf_cnpj", unique = true, updatable = false)
+	@Column(name = "cpf_cnpj", unique = true, updatable = false)
 	private String cpfOuCnpj;
 	@NotNull
 	private Boolean aceitaTermos;
 
-	private LocalDate dataHoraDoCadastro;
+	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
 	public Cliente(ClienteRequest clienteRequest) {
@@ -74,6 +75,6 @@ public class Cliente {
 		this.estadoCivil = clienteRequest.getEstadoCivil();
 		this.cpfOuCnpj = clienteRequest.getCpfOuCnpj();
 		this.aceitaTermos = clienteRequest.getAceitaTermos();
-		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 }

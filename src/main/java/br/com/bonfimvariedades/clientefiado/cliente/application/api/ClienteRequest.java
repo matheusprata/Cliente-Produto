@@ -6,8 +6,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import br.com.bonfimvariedades.clientefiado.cliente.domain.EstadoCivil;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.Sexo;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.TipoPessoa;
