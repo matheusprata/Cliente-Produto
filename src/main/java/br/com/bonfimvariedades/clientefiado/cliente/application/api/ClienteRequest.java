@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.bonfimvariedades.clientefiado.cliente.domain.EstadoCivil;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.Sexo;
+import br.com.bonfimvariedades.clientefiado.cliente.domain.TipoPessoa;
 import lombok.Value;
 
 @Value
@@ -23,11 +24,14 @@ public class ClienteRequest {
 	private String celular;
 	private String telefone;
 	private Sexo sexo;
+	@NotNull(message = "Tipo pessoa é obrigatório")
+	private TipoPessoa tipoPessoa;
 	@NotNull
 	private LocalDate dataNascimento;
-	@CPF
-	private String cpf;
+	private EstadoCivil estadoCivil;
+	@NotNull(message = "CPF OU CNPJ OBRIGATORIO")
+	private String cpfOuCnpj;
 	@NotNull
 	private Boolean aceitaTermos;
-	private EstadoCivil estadoCivil;
+	
 }
