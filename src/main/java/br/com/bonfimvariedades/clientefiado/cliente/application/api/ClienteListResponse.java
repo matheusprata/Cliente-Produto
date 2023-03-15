@@ -1,8 +1,10 @@
 package br.com.bonfimvariedades.clientefiado.cliente.application.api;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
+import br.com.bonfimvariedades.clientefiado.cliente.domain.Cliente;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.EstadoCivil;
 import lombok.Value;
 
@@ -17,4 +19,9 @@ public class ClienteListResponse {
 	private String cpfOuCnpj;
 	private LocalDate dataNascimento;
 	private EstadoCivil estadoCivil;
+
+	public static List<ClienteListResponse> converte(List<Cliente> clientes) {
+		
+		return null;
+	}
 }
