@@ -1,7 +1,10 @@
 package br.com.bonfimvariedades.clientefiado.cliente.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteListResponse;
 import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteRequest;
 import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteResponse;
 import br.com.bonfimvariedades.clientefiado.cliente.application.repository.ClienteRepository;
@@ -22,6 +25,14 @@ public class ClienteApplicationService implements ClienteService {
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[finaliza] ClienteApplicationService - criaCliente");
 		return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
+	}
+
+	@Override
+	public List<ClienteListResponse> buscaTodosClientes() {
+		log.info("[finaliza] ClienteApplicationService - buscaTodosClientes");
+		
+		log.info("[finaliza] ClienteApplicationService - buscaTodosClientes");
+		return null;
 	}
 
 }
