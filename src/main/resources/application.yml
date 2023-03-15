@@ -3,13 +3,12 @@ server:
     context-path: /cliente-fiado/api
 
 spring:
-  datasource: 
-    url: jdbc:mariadb://localhost:3306/cliente-fiado?createDatabaseIfNotExist=true
-    username: root
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cliente-fiado?createDatabaseIfNotExist=true
+    username: postgres
     password: root
-    driverClassName: org.mariadb.jdbc.Driver
-    
-jpa:
+  jpa:
     generate-ddl: true
     show-sql: true
     hibernate:

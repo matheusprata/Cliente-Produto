@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid", name = "idCliente", updatable = false, unique = true, nullable = false)
+	//@Column(columnDefinition = "uuid", name = "idCliente", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
