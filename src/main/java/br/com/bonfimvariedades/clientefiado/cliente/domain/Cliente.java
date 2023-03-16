@@ -88,7 +88,6 @@ public class Cliente {
 		this.sexo = clienteAlteracaoRequest.getSexo();
 		this.tipoPessoa = clienteAlteracaoRequest.getTipoPessoa();
 		this.estadoCivil = clienteAlteracaoRequest.getEstadoCivil();
-		this.cpfOuCnpj = clienteAlteracaoRequest.getCpfOuCnpj();
 		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 		
 	}

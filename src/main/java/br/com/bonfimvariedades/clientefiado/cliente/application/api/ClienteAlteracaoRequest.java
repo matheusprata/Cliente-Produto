@@ -24,8 +24,5 @@ public class ClienteAlteracaoRequest {
 	@NotNull(message = "Tipo pessoa é obrigatório")
 	private TipoPessoa tipoPessoa;
 	@NotNull
-	private EstadoCivil estadoCivil;
-	@NotNull(message = "CPF OU CNPJ OBRIGATORIO")
-	private String cpfOuCnpj;
-	
+	private EstadoCivil estadoCivil;	
 }
