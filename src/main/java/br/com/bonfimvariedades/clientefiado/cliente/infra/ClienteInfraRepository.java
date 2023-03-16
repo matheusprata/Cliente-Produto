@@ -3,8 +3,11 @@ package br.com.bonfimvariedades.clientefiado.cliente.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.bonfimvariedades.clientefiado.cliente.application.handler.APIException;
 import br.com.bonfimvariedades.clientefiado.cliente.application.repository.ClienteRepository;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +23,11 @@ public class ClienteInfraRepository implements ClienteRepository {
 	@Override
 	public Cliente salva(Cliente cliente) {
 		log.info("[inicia] ClienteInfraRepository - salva");
+		try {
 		clienteSpringDataJPARepository.save(cliente);
+		}catch(DataIntegrityViolationException e){
+			throw APIException.build(HttpStatus.BAD_REQUEST, "Existem dados duplicados", e);
+		}
 		log.info("[finaliza] ClienteInfraRepository - salva");
 		return cliente;
 	}

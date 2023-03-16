@@ -35,4 +35,5 @@ public interface ClienteApi {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void deletaClienteAtravesId(@PathVariable UUID idCliente);
 	
+	
 }
