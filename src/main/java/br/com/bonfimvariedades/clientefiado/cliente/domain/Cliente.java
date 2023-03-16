@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 import org.hibernate.validator.group.GroupSequenceProvider;
 
+import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteRequest;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.groups.ClienteGroupSequenceProvider;
 import br.com.bonfimvariedades.clientefiado.cliente.domain.groups.PessoaFisica;
@@ -77,5 +78,18 @@ public class Cliente {
 		this.cpfOuCnpj = clienteRequest.getCpfOuCnpj();
 		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
+	public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
+		this.email = clienteAlteracaoRequest.getEmail();
+		this.celular = clienteAlteracaoRequest.getCelular();
+		this.telefone = clienteAlteracaoRequest.getTelefone();
+		this.sexo = clienteAlteracaoRequest.getSexo();
+		this.tipoPessoa = clienteAlteracaoRequest.getTipoPessoa();
+		this.estadoCivil = clienteAlteracaoRequest.getEstadoCivil();
+		this.cpfOuCnpj = clienteAlteracaoRequest.getCpfOuCnpj();
+		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+		
 	}
 }
