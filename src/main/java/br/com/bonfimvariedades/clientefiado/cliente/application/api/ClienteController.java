@@ -3,6 +3,8 @@ package br.com.bonfimvariedades.clientefiado.cliente.application.api;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bonfimvariedades.clientefiado.cliente.application.service.ClienteService;
@@ -46,6 +48,15 @@ public class ClienteController implements ClienteApi {
 		log.info("[idCliente] ", idCliente);
 		clienteService.deletaClienteAtravesId(idCliente);
 		log.info("[finaliza] - ClienteController - deletaClienteAtravesId");
+	}
+
+	@Override
+	public void patchAlteraCliente(UUID idCliente, @Valid ClienteAlTeracaoRequest clienteAlTeracaoRequest) {
+		log.info("[inicia] - ClienteController - patchAlteraCliente");
+		log.info("[idCliente] ", idCliente);
+		
+		
+		log.info("[finaliza] - ClienteController - patchAlteraCliente");
 	}
 
 }
