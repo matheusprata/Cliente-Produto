@@ -1,8 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.repository;
 
 
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 
 import java.math.BigDecimal;
@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface PagamentoRepository {
-    List<Pagamento> getAllPagamentoByCadastro(Cadastro cadastro);
-    BigDecimal totalPago(Cadastro cadastro);
+    List<Pagamento> getAllPagamentoByPedido(Pedido pedido);
+    BigDecimal totalPago(Pedido pedido);
     Pagamento salvaPagamento(Pagamento pagamento);
     Pagamento getOnePagamento(Long idPagamento);
     void deletePagamento(Long idPagamento);

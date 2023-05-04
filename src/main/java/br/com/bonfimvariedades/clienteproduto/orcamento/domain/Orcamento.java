@@ -1,8 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
-import br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.Valid;
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pedido.annotation.constraints.Valid;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,7 +29,7 @@ public class Orcamento {
     @JsonIgnore
     private Cliente cliente;
 
-    @OneToMany
+    @OneToOne
     @JsonIgnore
     private Produto produto;
 

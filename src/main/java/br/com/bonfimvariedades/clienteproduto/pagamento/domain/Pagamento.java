@@ -1,7 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pagamento.domain;
 
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -26,18 +26,18 @@ public class Pagamento {
     private BigDecimal valorPago;
 
     @ManyToOne
-    @JoinColumn(name = "cadastro_id")
+    @JoinColumn(name = "pedido_id")
     @JsonIgnore
-    private Cadastro cadastro;
+    private Pedido pedido;
 
-    public Pagamento(PagamentoRequest pagamentoRequest, Cadastro cadastro) {
+    public Pagamento(PagamentoRequest pagamentoRequest, Pedido pedido) {
         this.tipoPagamento = pagamentoRequest.getTipoPagamento();
         this.valorPago = pagamentoRequest.getValorPago();
-        this.cadastro = cadastro;
+        this.pedido = pedido;
     }
-    public Pagamento(Cadastro cadastro, TipoPagamento tipoPagamentoEntrada) {
+    public Pagamento(Pedido pedido, TipoPagamento tipoPagamentoEntrada) {
         this.tipoPagamento = tipoPagamentoEntrada;
-        this.valorPago = cadastro.getValorEntrada();
-        this.cadastro = cadastro;
+        this.valorPago = pedido.getValorEntrada();
+        this.pedido = pedido;
     }
 }

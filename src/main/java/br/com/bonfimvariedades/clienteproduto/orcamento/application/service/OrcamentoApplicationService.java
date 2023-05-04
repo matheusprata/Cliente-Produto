@@ -1,6 +1,5 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.application.service;
 
-import br.com.bonfimvariedades.clienteproduto.cliente.application.repository.ClienteRepository;
 import br.com.bonfimvariedades.clienteproduto.cliente.application.service.ClienteService;
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
@@ -13,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import static br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.Valid.validaSolicitacao;
+import static br.com.bonfimvariedades.clienteproduto.pedido.annotation.constraints.Valid.validaSolicitacao;
 
 @Service
 @Log4j2

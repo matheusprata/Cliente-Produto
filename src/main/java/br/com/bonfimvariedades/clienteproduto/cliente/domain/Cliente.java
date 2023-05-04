@@ -1,10 +1,9 @@
 package br.com.bonfimvariedades.clienteproduto.cliente.domain;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
-import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -54,12 +53,12 @@ public class Cliente {
 	@Column(name = "cpf", unique = true, updatable = false)
 	private String cpf;
 	private Boolean aceitaTermos = true;
-	private LocalDate dataDoCadastro;
+	private LocalDate dataDoPedido;
 	private LocalDate dataUltimaAlteracao;
 
 	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	@JsonIgnore
-	Cadastro cadastro;
+	Pedido pedido;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();
