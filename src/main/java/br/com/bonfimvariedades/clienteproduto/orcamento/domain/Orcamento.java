@@ -29,7 +29,7 @@ public class Orcamento {
     @JsonIgnore
     private Cliente cliente;
 
-    @OneToOne
+    @OneToMany
     @JsonIgnore
     private Produto produto;
 
