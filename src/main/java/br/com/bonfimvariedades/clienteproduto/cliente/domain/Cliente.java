@@ -57,7 +57,7 @@ public class Cliente {
 	private LocalDate dataDoCadastro;
 	private LocalDate dataUltimaAlteracao;
 
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	@JsonIgnore
 	List<Cadastro> cadastros;
 

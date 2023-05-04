@@ -30,12 +30,12 @@ public class Cadastro {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCadastro;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     @JsonIgnore
     private Cliente cliente;
 
-    @OneToOne
+    @OneToMany
     @JsonIgnore
     private Produto produto;
 
