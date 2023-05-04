@@ -1,6 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.application.api;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
 import lombok.Data;
 

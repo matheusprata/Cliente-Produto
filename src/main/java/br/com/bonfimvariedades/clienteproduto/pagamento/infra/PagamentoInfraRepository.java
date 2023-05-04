@@ -1,8 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.pagamento.infra;
 
 import br.com.bonfimvariedades.clienteproduto.handler.APIException;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.Matricula;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.repository.PagamentoRepository;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import lombok.RequiredArgsConstructor;
@@ -30,17 +30,17 @@ public class PagamentoInfraRepository implements PagamentoRepository {
     }
 
     @Override
-    public List<Pagamento> getAllPagamentoByMatricula(Matricula matricula) {
+    public List<Pagamento> getAllPagamentoByCadastro(Cadastro cadastro) {
         log.info("[inicia] PagamentoInfraRepository - getPagamento");
-        List<Pagamento> pagamentos = pagamentoSpringDataJPARepository.findByMatricula(matricula);
+        List<Pagamento> pagamentos = pagamentoSpringDataJPARepository.findByCadastro(cadastro);
         log.info("[finaliza] PagamentoInfraRepository - getPagamento");
         return pagamentos;
     }
 
     @Override
-    public BigDecimal totalPago(Matricula matricula) {
+    public BigDecimal totalPago(Cadastro cadastro) {
         log.info("[inicia] PagamentoInfraRepository - totalPago");
-        List<Pagamento> pagamentos = pagamentoSpringDataJPARepository.findByMatricula(matricula);
+        List<Pagamento> pagamentos = pagamentoSpringDataJPARepository.findByCadastro(cadastro);
         BigDecimal totalPago = pagamentos.stream()
                 .map(Pagamento::getValorPago)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

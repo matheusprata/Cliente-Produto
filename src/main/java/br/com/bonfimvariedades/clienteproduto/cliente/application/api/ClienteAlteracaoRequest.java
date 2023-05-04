@@ -12,12 +12,11 @@ import lombok.Value;
 @Value
 public class ClienteAlteracaoRequest {
 	
-	@NotBlank
+	@NotNull
 	private String nomeCompleto;
-	@NotBlank
+	@NotNull
 	@Email
 	private String email;
-	@NotBlank
 	private String celular;
 	private String telefone;
 	private Sexo sexo;

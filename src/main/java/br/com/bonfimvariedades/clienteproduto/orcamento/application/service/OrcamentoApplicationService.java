@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import static br.com.bonfimvariedades.clienteproduto.matricula.annotation.constraints.Valid.validaSolicitacao;
+import static br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.Valid.validaSolicitacao;
 
 @Service
 @Log4j2

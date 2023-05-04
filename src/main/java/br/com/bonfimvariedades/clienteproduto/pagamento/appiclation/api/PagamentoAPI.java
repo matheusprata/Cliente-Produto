@@ -10,13 +10,13 @@ import java.util.UUID;
 @RequestMapping("/v1/pagamento")
 public interface PagamentoAPI {
 
-    @PostMapping("/{idMatricula}")
+    @PostMapping("/{idCadastro}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    PagamentoResponse savePagamento(@PathVariable UUID idMatricula, @Valid @RequestBody PagamentoRequest pagamentoRequest);
+    PagamentoResponse savePagamento(@PathVariable UUID idCadastro, @Valid @RequestBody PagamentoRequest pagamentoRequest);
 
-    @GetMapping(value = "/matricula/{idMatricula}")
+    @GetMapping(value = "/cadastro/{idCadastro}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<PagamentoResponse> getAllPagamentoByMatricula(@PathVariable UUID idMatricula);
+    List<PagamentoResponse> getAllPagamentoByCadastro(@PathVariable UUID idCadastro);
 
     @GetMapping("/{idPagamento}")
     @ResponseStatus(code = HttpStatus.OK)
