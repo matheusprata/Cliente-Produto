@@ -1,6 +1,6 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.application.api.request;
+package br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Value;
@@ -8,7 +8,7 @@ import lombok.Value;
 import java.math.BigDecimal;
 
 @Value
-public class MatriculaAlteracaoRequest {
+public class CadastroAlteracaoRequest {
     TipoPagamento tipoPagamento;
     BigDecimal valorEntrada;
     int desconto;

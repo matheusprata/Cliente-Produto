@@ -1,8 +1,8 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.domain;
+package br.com.bonfimvariedades.clienteproduto.cadastro.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.api.request.MatriculaAlteracaoRequest;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.api.request.MatriculaRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request.CadastroAlteracaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request.CadastroRequest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
@@ -19,16 +19,16 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.bonfimvariedades.clienteproduto.matricula.annotation.constraints.Valid.calcularValorFinal;
+import static br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.Valid.calcularValorFinal;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
-public class Matricula {
+public class Cadastro {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idMatricula;
+    private UUID idCadastro;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
@@ -47,27 +47,27 @@ public class Matricula {
     @Max(value = 12, message = "O valor máximo é 12")
     private int quantidadeParcelas;
     private BigDecimal valorFinal;
-    private LocalDate dataMatricula = LocalDate.now();
+    private LocalDate dataCadastro = LocalDate.now();
     private String observacao;
     @Enumerated(EnumType.STRING)
     private Status status = Status.ATIVA;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "matricula")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cadastro")
     @JsonIgnore
     private List<Pagamento> pagamentos;
 
-    public Matricula(Cliente cliente, Produto produto, MatriculaRequest matriculaRequest) {
+    public Cadastro(Cliente cliente, Produto produto, CadastroRequest cadastroRequest) {
         this.cliente = cliente;
         this.produto = produto;
-        this.tipoPagamento = matriculaRequest.getTipoPagamento();
-        this.valorEntrada = matriculaRequest.getValorEntrada();
-        this.desconto = matriculaRequest.getDesconto();
-        this.quantidadeParcelas = matriculaRequest.getQuantidadeParcelas();
-        this.observacao = matriculaRequest.getObservacao().toUpperCase();
-        this.valorFinal = calcularValorFinal(matriculaRequest.getDesconto(), produto.getValorProduto());
+        this.tipoPagamento = cadastroRequest.getTipoPagamento();
+        this.valorEntrada = cadastroRequest.getValorEntrada();
+        this.desconto = cadastroRequest.getDesconto();
+        this.quantidadeParcelas = cadastroRequest.getQuantidadeParcelas();
+        this.observacao = cadastroRequest.getObservacao().toUpperCase();
+        this.valorFinal = calcularValorFinal(cadastroRequest.getDesconto(), produto.getValorProduto());
     }
 
-    public Matricula(Orcamento orcamento) {
+    public Cadastro(Orcamento orcamento) {
         this.cliente = orcamento.getCliente();
         this.produto = orcamento.getProduto();
         this.tipoPagamento = orcamento.getTipoPagamento();
@@ -78,19 +78,19 @@ public class Matricula {
         this.valorFinal = orcamento.getValorFinal();
     }
 
-    public void altera(MatriculaAlteracaoRequest matriculaAlteracaoRequest) {
-        this.tipoPagamento = matriculaAlteracaoRequest.getTipoPagamento();
-        this.valorEntrada = matriculaAlteracaoRequest.getValorEntrada();
-        this.desconto = matriculaAlteracaoRequest.getDesconto();
-        this.quantidadeParcelas = matriculaAlteracaoRequest.getQuantidadeParcelas();
-        this.observacao = matriculaAlteracaoRequest.getObservacao().toUpperCase();
+    public void altera(CadastroAlteracaoRequest cadastroAlteracaoRequest) {
+        this.tipoPagamento = cadastroAlteracaoRequest.getTipoPagamento();
+        this.valorEntrada = cadastroAlteracaoRequest.getValorEntrada();
+        this.desconto = cadastroAlteracaoRequest.getDesconto();
+        this.quantidadeParcelas = cadastroAlteracaoRequest.getQuantidadeParcelas();
+        this.observacao = cadastroAlteracaoRequest.getObservacao().toUpperCase();
     }
 
-    public void finalizaMatricula() {
+    public void finalizaCadastro() {
         this.status = Status.INATIVA;
     }
 
-    public void ativaMatricula() { this.status = Status.ATIVA; }
+    public void ativaCadastro() { this.status = Status.ATIVA; }
 
-    public void cancelaMatricula() { this.status = Status.CANCELADA; }
+    public void cancelaCadastro() { this.status = Status.CANCELADA; }
 }

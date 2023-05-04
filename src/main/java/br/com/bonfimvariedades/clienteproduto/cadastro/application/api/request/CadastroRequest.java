@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.application.api.request;
+package br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,6 +7,6 @@ import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class MatriculaRequest extends SolicitacaoRequest{
+public class CadastroRequest extends SolicitacaoRequest{
     UUID idCliente;
 }
