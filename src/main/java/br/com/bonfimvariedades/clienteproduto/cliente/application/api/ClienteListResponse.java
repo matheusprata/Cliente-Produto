@@ -1,32 +1,25 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.api;
+package br.com.bonfimvariedades.clienteproduto.cliente.application.api;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import br.com.bonfimvariedades.clientefiado.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.TipoPessoa;
 import lombok.Value;
 
 @Value
 public class ClienteListResponse {
 	private UUID idCliente;
 	private String nomeCompleto;
-	private String email;
-	private String celular;
-	private String sexo;
 	private String tipoPessoa;
-	private String cpfOuCnpj;
-	private String estadoCivil;
+	private String cpf;
 
-	public ClienteListResponse(Cliente cliente){
+	public ClienteListResponse(Cliente cliente) {
 		this.idCliente = cliente.getIdCliente();
 		this.nomeCompleto = cliente.getNomeCompleto();
 		this.tipoPessoa = cliente.getTipoPessoa().toString();
-		this.cpfOuCnpj = cliente.getCpfOuCnpj();
-		this.celular = cliente.getCelular();
-		this.email = cliente.getEmail();
-		this.sexo = cliente.getSexo().toString();
-		this.estadoCivil = cliente.getEstadoCivil().toString();
+		this.cpf = cliente.getCpf().toString();
 	}
 	
 	public static List<ClienteListResponse> converte(List<Cliente> clientes) {

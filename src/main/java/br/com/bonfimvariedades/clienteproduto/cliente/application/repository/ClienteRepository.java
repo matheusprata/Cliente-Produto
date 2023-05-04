@@ -1,9 +1,10 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.repository;
+package br.com.bonfimvariedades.clienteproduto.cliente.application.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-import br.com.bonfimvariedades.clientefiado.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
 
 public interface ClienteRepository {
 
@@ -15,6 +16,5 @@ public interface ClienteRepository {
 
 	void deletaClienteAtravesId(Cliente cliente);
 
-	
-
+	Optional<Cliente> findByCpf(String cpf);
 }

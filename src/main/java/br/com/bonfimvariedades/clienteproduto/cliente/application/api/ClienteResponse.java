@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.api;
+package br.com.bonfimvariedades.clienteproduto.cliente.application.api;
 
 import java.util.UUID;
 

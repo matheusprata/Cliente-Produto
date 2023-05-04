@@ -1,6 +1,6 @@
-package br.com.bonfimvariedades.clientefiado.cliente.domain;
+package br.com.bonfimvariedades.clienteproduto.cliente.domain;
 
-import br.com.bonfimvariedades.clientefiado.cliente.domain.groups.PessoaFisica;
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
 import lombok.Getter;
 
 @Getter

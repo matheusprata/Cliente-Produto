@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clientefiado;
+package br.com.bonfimvariedades.clienteproduto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @RequestMapping("/")
-public class ClienteFiadoApplication {
+public class ClienteProdutoApplication {
 
 	@GetMapping
-	public String getHometeste() {
-		return "API CLIENTE-FIADO";
+	public String getHomeTeste() {
+		return "API CLIENTE-PRODUTO";
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(ClienteFiadoApplication.class, args);
+		SpringApplication.run(ClienteProdutoApplication.class, args);
 	}
 }

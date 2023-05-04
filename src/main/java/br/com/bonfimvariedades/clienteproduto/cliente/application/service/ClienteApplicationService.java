@@ -1,17 +1,21 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.service;
+package br.com.bonfimvariedades.clienteproduto.cliente.application.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import br.com.bonfimvariedades.clienteproduto.cliente.application.repository.ClienteRepository;
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.handler.APIException;
+import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteAlteracaoRequest;
-import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteDetalhadoResponse;
-import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteListResponse;
-import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteRequest;
-import br.com.bonfimvariedades.clientefiado.cliente.application.api.ClienteResponse;
-import br.com.bonfimvariedades.clientefiado.cliente.application.repository.ClienteRepository;
-import br.com.bonfimvariedades.clientefiado.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteAlteracaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteDetalhadoResponse;
+import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteListResponse;
+import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteRequest;
+import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -64,4 +68,12 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[finaliza] ClienteApplicationService - patchAlteraCliente");
 	}
 
+	@Override
+	public Cliente getOrcamentoByCliente(OrcamentoRequest request) {
+		log.info("[inicia] ClienteApplicationService - getOrcamentoByCliente");
+		Optional<Cliente> clienteOptional = clienteRepository.findByCpf(request.getCpf());
+		Cliente cliente = clienteOptional.orElseGet(() -> clienteRepository.salva(new Cliente(request)));
+		log.info("[inicia] ClienteApplicationService - getOrcamentoByCliente");
+		return cliente;
+	}
 }

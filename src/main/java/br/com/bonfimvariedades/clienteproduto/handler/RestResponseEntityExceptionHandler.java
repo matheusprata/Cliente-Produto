@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.handler;
+package br.com.bonfimvariedades.clienteproduto.handler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @RestControllerAdvice
 @Log4j2
 public class RestResponseEntityExceptionHandler {
-	
 	@ExceptionHandler(APIException.class)
 	public ResponseEntity<ErrorApiResponse> handlerGenericException(APIException ex) {
 		return ex.buildErrorResponseEntity();
@@ -32,15 +32,20 @@ public class RestResponseEntityExceptionHandler {
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex){
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
 		Map<String, String> errors = new HashMap<>();
 		ex.getBindingResult().getAllErrors().forEach((error) -> {
 			String fieldName = ((FieldError) error).getField();
 			String errorMessage = error.getDefaultMessage();
 			errors.put(fieldName, errorMessage);
 		});
-	return errors;
+		return errors;
 	}
-	
 
+	@ExceptionHandler(MaxUploadSizeExceededException.class)
+	public ResponseEntity<ErrorResponse> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException ex) {
+		String mensagem = "O tamanho do arquivo enviado excede o limite permitido de 1 MB.";
+		ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), mensagem);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
 }
