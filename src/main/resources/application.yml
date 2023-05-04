@@ -1,13 +1,13 @@
 server: 
   servlet:
-    context-path: /cliente-fiado/api
+    context-path: /cliente-produto/api
 
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/cliente-fiado?createDatabaseIfNotExist=true
+    url: jdbc:postgresql://localhost:5432/cliente-produto?createDatabaseIfNotExist=true
     username: postgres
-    password: root
+    password: 852456
   jpa:
     generate-ddl: true
     show-sql: true
