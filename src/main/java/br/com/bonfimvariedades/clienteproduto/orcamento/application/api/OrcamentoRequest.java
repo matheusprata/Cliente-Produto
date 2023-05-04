@@ -1,7 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.application.api;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.api.request.SolicitacaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request.SolicitacaoRequest;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -19,4 +19,6 @@ public class OrcamentoRequest extends SolicitacaoRequest {
     String nomeCompleto;
     @Pattern(regexp = "^\\(\\d{2}\\)\\d{4,5}-\\d{4}$", message = "Telefone inválido")
     String telefone;
+    @NotNull(message = "Email Obrigatório!")
+    String email;
 }

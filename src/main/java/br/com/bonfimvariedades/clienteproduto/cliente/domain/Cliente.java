@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.Matricula;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -44,15 +44,11 @@ public class Cliente {
 	private String email;
 	private String celular;
 	private String telefone;
-	@NotNull(message = "Campo Obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
-	@NotNull(message = "Campo Obrigatório!")
 	private LocalDate dataNascimento;
-	@NotNull(message = "Campo Obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private EstadoCivil estadoCivil;
-	@NotNull(message = "Cpf/Cnpj Obrigatório!")
 	@CPF(groups = PessoaFisica.class)
 	@CNPJ(groups = PessoaJuridica.class)
 	@Column(name = "cpf", unique = true, updatable = false)
@@ -63,7 +59,7 @@ public class Cliente {
 
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	@JsonIgnore
-	List<Matricula> matriculas;
+	List<Cadastro> cadastros;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();
@@ -80,6 +76,7 @@ public class Cliente {
 		this.cpf = orcamentoRequest.getCpf();
 		this.nomeCompleto = orcamentoRequest.getNomeCompleto().toUpperCase();
 		this.telefone = orcamentoRequest.getTelefone();
+		this.email = orcamentoRequest.getEmail();
 	}
 
 	public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {

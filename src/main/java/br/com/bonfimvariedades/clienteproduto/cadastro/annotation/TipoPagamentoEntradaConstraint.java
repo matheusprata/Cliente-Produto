@@ -1,6 +1,6 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.annotation;
+package br.com.bonfimvariedades.clienteproduto.cadastro.annotation;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.annotation.constraints.TipoPagamentoEntradaValidator;
+import br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.TipoPagamentoEntradaValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

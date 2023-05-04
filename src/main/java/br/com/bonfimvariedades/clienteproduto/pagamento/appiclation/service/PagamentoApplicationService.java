@@ -1,9 +1,9 @@
 package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service;
 
 import br.com.bonfimvariedades.clienteproduto.handler.APIException;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.repository.MatriculaRepository;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.Matricula;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.repository.CadastroRepository;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoRequest;
 import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoResponse;
 import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.repository.PagamentoRepository;
@@ -22,16 +22,16 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PagamentoApplicationService implements PagamentoService {
     private final PagamentoRepository pagamentoRepository;
-    private final MatriculaRepository matriculaRepository;
+    private final CadastroRepository cadastroRepository;
 
     @Override
-    public PagamentoResponse savePagamento(UUID idMatricula, PagamentoRequest pagamentoRequest) {
+    public PagamentoResponse savePagamento(UUID idCadastro, PagamentoRequest pagamentoRequest) {
         log.info("[inicia] PagamentoApplicationService - savePagamento");
-        Matricula matricula = matriculaRepository.getOneMatricula(idMatricula);
-        BigDecimal totalPago = pagamentoRepository.totalPago(matricula);
-        BigDecimal saldoAPagar = matricula.getValorFinal().subtract(totalPago);
+        Cadastro cadastro = cadastroRepository.getOneCadastro(idCadastro);
+        BigDecimal totalPago = pagamentoRepository.totalPago(cadastro);
+        BigDecimal saldoAPagar = cadastro.getValorFinal().subtract(totalPago);
         if (pagamentoRequest.getValorPago().compareTo(saldoAPagar)<=0){
-            Pagamento pagamento = pagamentoRepository.salvaPagamento(new Pagamento(pagamentoRequest, matricula));
+            Pagamento pagamento = pagamentoRepository.salvaPagamento(new Pagamento(pagamentoRequest, cadastro));
             log.info("[finaliza] PagamentoApplicationService - savePagamento");
             return new PagamentoResponse(pagamento);
         } else {
@@ -40,11 +40,11 @@ public class PagamentoApplicationService implements PagamentoService {
         }
     }
     @Override
-    public List<PagamentoResponse> getAllPagamentoByMatricula(UUID idMatricula) {
-        log.info("[inicia] PagamentoApplicationService - getAllPagamentoByMatricula");
-        Matricula matricula = matriculaRepository.getOneMatricula(idMatricula);
-        List<Pagamento> pagamento = pagamentoRepository.getAllPagamentoByMatricula(matricula);
-        log.info("[finaliza] PagamentoApplicationService - getAllPagamentoByMatricula");
+    public List<PagamentoResponse> getAllPagamentoByCadastro(UUID idCadastro) {
+        log.info("[inicia] PagamentoApplicationService - getAllPagamentoByCadastro");
+        Cadastro cadastro = cadastroRepository.getOneCadastro(idCadastro);
+        List<Pagamento> pagamento = pagamentoRepository.getAllPagamentoByCadastro(cadastro);
+        log.info("[finaliza] PagamentoApplicationService - getAllPagamentoByCadastro");
         return PagamentoResponse.convert(pagamento);
     }
     @Override
@@ -55,9 +55,9 @@ public class PagamentoApplicationService implements PagamentoService {
         return new PagamentoResponse(pagamento);
     }
     @Override
-    public Pagamento savePagamentoByEntrada(Matricula matricula, TipoPagamento tipoPagamentoEntrada) {
+    public Pagamento savePagamentoByEntrada(Cadastro cadastro, TipoPagamento tipoPagamentoEntrada) {
         log.info("[inicia] PagamentoApplicationService - savePagamentoByEntrada");
-        Pagamento pagamento = pagamentoRepository.salvaPagamento(new Pagamento(matricula, tipoPagamentoEntrada));
+        Pagamento pagamento = pagamentoRepository.salvaPagamento(new Pagamento(cadastro, tipoPagamentoEntrada));
         log.info("[finaliza] PagamentoApplicationService - savePagamentoByEntrada");
         return pagamento;
     }

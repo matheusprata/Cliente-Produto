@@ -1,8 +1,8 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.application.api.request;
+package br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.annotation.TipoPagamentoEntradaConstraint;
-import br.com.bonfimvariedades.clienteproduto.matricula.annotation.ValidSolicitacaoRequest;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.annotation.TipoPagamentoEntradaConstraint;
+import br.com.bonfimvariedades.clienteproduto.cadastro.annotation.ValidSolicitacaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

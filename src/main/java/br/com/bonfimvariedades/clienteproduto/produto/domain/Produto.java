@@ -1,6 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.produto.domain;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.Status;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Status;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
 import jakarta.persistence.*;

@@ -1,10 +1,10 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.annotation.constraints;
+package br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints;
 
 import br.com.bonfimvariedades.clienteproduto.handler.APIException;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.api.request.MatriculaAlteracaoRequest;
-import br.com.bonfimvariedades.clienteproduto.matricula.application.api.request.SolicitacaoRequest;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.Matricula;
-import br.com.bonfimvariedades.clienteproduto.matricula.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request.CadastroAlteracaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.application.api.request.SolicitacaoRequest;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.Cadastro;
+import br.com.bonfimvariedades.clienteproduto.cadastro.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Categoria;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import org.springframework.http.HttpStatus;
@@ -18,9 +18,9 @@ public class Valid {
         validaEntrada(request.getValorEntrada(), produto.getValorProduto(), request.getDesconto());
     }
 
-    public static void validaAlteracaoMatricula(Matricula matricula, MatriculaAlteracaoRequest request) {
+    public static void validaAlteracaoCadastro(Cadastro cadastro, CadastroAlteracaoRequest request) {
         validarTipoPagamentoETotalParcelas(request.getTipoPagamento(), request.getQuantidadeParcelas());
-        validaEntrada(request.getValorEntrada(), matricula.getProduto().getValorProduto(), request.getDesconto());
+        validaEntrada(request.getValorEntrada(), cadastro.getProduto().getValorProduto(), request.getDesconto());
     }
 
     public static void validarTipoPagamentoETotalParcelas(TipoPagamento tipoPagamento, int quantidadeParcelas) {

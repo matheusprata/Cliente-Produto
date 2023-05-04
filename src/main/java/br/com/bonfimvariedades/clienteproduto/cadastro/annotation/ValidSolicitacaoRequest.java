@@ -1,6 +1,6 @@
-package br.com.bonfimvariedades.clienteproduto.matricula.annotation;
+package br.com.bonfimvariedades.clienteproduto.cadastro.annotation;
 
-import br.com.bonfimvariedades.clienteproduto.matricula.annotation.constraints.SolicitacaoRequestValidator;
+import br.com.bonfimvariedades.clienteproduto.cadastro.annotation.constraints.SolicitacaoRequestValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

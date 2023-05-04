@@ -15,7 +15,9 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Value
 public class ClienteRequest {
+	@NotNull(message = "NOME OBRIGATORIO")
 	private String nomeCompleto;
+	@NotNull(message = "EMAIL OBRIGATORIO")
 	@Email
 	private String email;
 	private String celular;
