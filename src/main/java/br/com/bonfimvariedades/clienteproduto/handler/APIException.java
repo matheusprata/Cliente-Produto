@@ -1,22 +1,20 @@
-package br.com.bonfimvariedades.clientefiado.cliente.application.handler;
-
-import java.util.Optional;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+package br.com.bonfimvariedades.clienteproduto.handler;
 
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Optional;
 
 @Getter
 @Log4j2
-public class APIException extends RuntimeException{
-	
+public class APIException extends RuntimeException {
 	private HttpStatus statusException;
 	private ErrorApiResponse bodyException;
 	
 	private APIException(HttpStatus statusException, String message, Exception e) {
-		super();
+		super(message, e);
 		this.statusException = statusException;
 		this.bodyException = ErrorApiResponse.builder()
 				.message(message)
@@ -29,24 +27,24 @@ public class APIException extends RuntimeException{
 	}
 	
 	public static APIException build(HttpStatus statusException, String message, Exception e) {
-		log.error("Exception", e);
+		log.error("Exception: ", e);
 		return new APIException(statusException, message, e);
 	}
-	
+
 	private String getDescription(Exception e) {
 		return Optional.ofNullable(e)
 				.map(APIException::getMessageCause).orElse(null);
 	}
-	
+
 	private static String getMessageCause(Exception e) {
-		return e.getCause() != null ? e.getCause().getMessage():e.getMessage();
+		return e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
 	}
-	
-	public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity(){
+
+	public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity() {
 		return ResponseEntity
 				.status(statusException)
 				.body(bodyException);
 	}
-
+	
 	private static final long serialVersionUID = 1L;
 }
