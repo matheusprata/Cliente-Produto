@@ -9,16 +9,16 @@ import java.util.UUID;
 
 @Value
 public class ProdutoResponse {
-    UUID idproduto;
+    UUID idProduto;
     String nomeProduto;
     String categoria;
-    BigDecimal valorproduto;
+    BigDecimal valoProduto;
 
     public ProdutoResponse(Produto produto) {
-        this.idproduto = produto.getIdProduto();
+        this.idProduto = produto.getIdProduto();
         this.nomeProduto = produto.getNomeProduto();
         this.categoria = produto.getCategoria().toString();
-        this.valorproduto = produto.getValorProduto();
+        this.valoProduto = produto.getValorProduto();
     }
 
     public static List<ProdutoResponse> converte(List<Produto> produtos) {

@@ -21,40 +21,40 @@ public class ProdutoInfraRepository implements ProdutoRepository {
 
     @Override
     public Produto salvaProduto(Produto produto) {
-        log.info("[inicia] produtoInfraRepository - salvaproduto");
+        log.info("[inicia] produtoInfraRepository - salvaProduto");
         try {
             produtoSpringDataInfraRepository.save(produto);
         }catch (DataIntegrityViolationException e){
             throw APIException.build(HttpStatus.BAD_REQUEST, "Produto já cadastrado", e);
         }
-        log.info("[finaliza] produtoInfraRepository - salvaproduto");
+        log.info("[finaliza] produtoInfraRepository - salvaProduto");
         return produto;
     }
 
     @Override
     public Produto getOneProduto(UUID idProduto) {
-        log.info("[inicia] produtoInfraRepository - getOneproduto");
+        log.info("[inicia] produtoInfraRepository - getOneProduto");
         Optional<Produto> optionalproduto = produtoSpringDataInfraRepository.findById(idProduto);
         Produto produto = optionalproduto
                 .orElseThrow(
                         () -> APIException.build(HttpStatus.BAD_REQUEST, "Produto não encontrado")
                 );
-        log.info("[finaliza] produtoInfraRepository - getOneproduto");
+        log.info("[finaliza] produtoInfraRepository - getOneProduto");
         return produto;
     }
 
     @Override
     public List<Produto> getAllProdutos() {
-        log.info("[inicia] produtoInfraRepository - getAllprodutos");
+        log.info("[inicia] produtoInfraRepository - getAllProdutos");
         List<Produto> produtos = produtoSpringDataInfraRepository.findAll();
-        log.info("[finaliza] produtoInfraRepository - getAllprodutos");
+        log.info("[finaliza] produtoInfraRepository - getAllProdutos");
         return produtos;
     }
 
     @Override
     public void deleteProduto(UUID idproduto) {
-        log.info("[inicia] produtoInfraRepository - deleteproduto");
+        log.info("[inicia] produtoInfraRepository - deleteProduto");
         produtoSpringDataInfraRepository.deleteById(idproduto);
-        log.info("[finaliza] produtoInfraRepository - deleteproduto");
+        log.info("[finaliza] produtoInfraRepository - deleteProduto");
     }
 }

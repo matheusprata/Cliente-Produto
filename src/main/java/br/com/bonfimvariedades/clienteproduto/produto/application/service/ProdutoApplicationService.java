@@ -28,9 +28,9 @@ public class ProdutoApplicationService implements ProdutoService {
                 .build();
     }
 
-    public Produto getOneProduto(UUID idproduto) {
+    public Produto getOneProduto(UUID idProduto) {
         log.info("[inicia] produtoApplicationService - getOneproduto");
-        Produto produto = produtoRepository.getOneProduto(idproduto);
+        Produto produto = produtoRepository.getOneProduto(idProduto);
         log.info("[finaliza] produtoApplicationService - getOneproduto");
         return produto;
     }
@@ -49,9 +49,9 @@ public class ProdutoApplicationService implements ProdutoService {
         log.info("[finaliza] produtoApplicationService - deleteproduto");
     }
 
-    public void updateProduto(UUID idproduto, ProdutoUpdateRequest updateRequest) {
+    public void updateProduto(UUID idProduto, ProdutoUpdateRequest updateRequest) {
         log.info("[inicia] produtoApplicationService - updateproduto");
-        Produto produto = produtoRepository.getOneProduto(idproduto);
+        Produto produto = produtoRepository.getOneProduto(idProduto);
         produto.altera(updateRequest);
         produtoRepository.salvaProduto(produto);
         log.info("[finaliza] produtoApplicationService - updateproduto");

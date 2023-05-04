@@ -11,5 +11,5 @@ public class ProdutoRequest {
     @NotBlank
     String nomeProduto;
     Categoria categoria;
-    BigDecimal valorproduto;
+    BigDecimal valorProduto;
 }

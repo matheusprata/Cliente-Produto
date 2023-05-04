@@ -10,5 +10,6 @@ import java.math.BigDecimal;
 public class ProdutoUpdateRequest {
     @NotBlank
     String nomeProduto;
-    BigDecimal valorproduto;
+    String categoria;
+    BigDecimal valorProduto;
 }
