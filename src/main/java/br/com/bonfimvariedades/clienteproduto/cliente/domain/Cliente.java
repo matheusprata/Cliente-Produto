@@ -59,7 +59,7 @@ public class Cliente {
 
 	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	@JsonIgnore
-	List<Cadastro> cadastros;
+	Cadastro cadastro;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();
