@@ -16,47 +16,47 @@ public class ProdutoRestController implements ProdutoApi {
     private final ProdutoService produtoService;
 
     @Override
-    public ProdutoIdResponse saveproduto(ProdutoRequest request) {
-        log.info("[inicia] produtoRestController - post");
+    public ProdutoIdResponse saveProduto(ProdutoRequest request) {
+        log.info("[inicia] produtoRestController - saveProduto");
         ProdutoIdResponse idResponse = produtoService.saveProduto(request);
-        log.info("[finaliza] produtoRestController - post");
+        log.info("[finaliza] produtoRestController - saveProduto");
         return idResponse;
     }
 
     @Override
-    public ProdutoResponse getOneproduto(UUID idProduto) {
-        log.info("[inicia] produtoRestController - post");
+    public ProdutoResponse getOneProduto(UUID idProduto) {
+        log.info("[inicia] produtoRestController - getOneProduto");
         Produto produto = produtoService.getOneProduto(idProduto);
-        log.info("[finaliza] produtoRestController - post");
+        log.info("[finaliza] produtoRestController - getOneProduto");
         return new ProdutoResponse(produto);
     }
 
     @Override
     public List<ProdutoResponse> getAllProdutos() {
-        log.info("[inicia] produtoRestController - getAll");
+        log.info("[inicia] produtoRestController - getAllProdutos");
         List<Produto> produtos = produtoService.getAllProdutos();
-        log.info("[finaliza] produtoRestController - getAll");
+        log.info("[finaliza] produtoRestController - getAllProdutos");
         return ProdutoResponse.converte(produtos);
     }
 
     @Override
     public void deleteProduto(UUID idProduto) {
-        log.info("[inicia] produtoRestController - delete");
+        log.info("[inicia] produtoRestController - deleteProduto");
         produtoService.deleteProduto(idProduto);
-        log.info("[finaliza] produtoRestController - delete");
+        log.info("[finaliza] produtoRestController - deleteProduto");
     }
 
     @Override
     public void updateProduto(UUID idProduto, ProdutoUpdateRequest updateRequest) {
-        log.info("[inicia] produtoRestController - update");
+        log.info("[inicia] produtoRestController - updateProduto");
         produtoService.updateProduto(idProduto, updateRequest);
-        log.info("[finaliza] produtoRestController - update");
+        log.info("[finaliza] produtoRestController - updateProduto");
     }
 
     @Override
     public void updateProdutoStatus(UUID idProduto) {
-        log.info("[inicia] produtoRestController - updateStatus");
+        log.info("[inicia] produtoRestController - updateProdutoStatus");
         produtoService.updateProdutoStatus(idProduto);
-        log.info("[finaliza] produtoRestController - updateStatus");
+        log.info("[finaliza] produtoRestController - updateProdutoStatus");
     }
 }

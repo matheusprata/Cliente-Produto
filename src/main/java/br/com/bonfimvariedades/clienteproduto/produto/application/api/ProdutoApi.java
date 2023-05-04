@@ -12,11 +12,11 @@ public interface ProdutoApi {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    ProdutoIdResponse saveproduto(@Valid @RequestBody ProdutoRequest request);
+    ProdutoIdResponse saveProduto(@Valid @RequestBody ProdutoRequest request);
 
     @GetMapping("/{idProduto}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProdutoResponse getOneproduto(@PathVariable UUID idProduto);
+    ProdutoResponse getOneProduto(@PathVariable UUID idProduto);
 
     @GetMapping("/all")
     @ResponseStatus(code = HttpStatus.OK)
