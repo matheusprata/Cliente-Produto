@@ -18,10 +18,10 @@ public class PagamentoResponse {
 
     public PagamentoResponse(Pagamento pagamento) {
         this.recibo = pagamento.getIdPagamento();
-        this.cpf = ocultarDocumento(pagamento.getCadastro().getCliente().getCpf());
-        this.nomeCompleto = pagamento.getCadastro().getCliente().getNomeCompleto();
-        this.servico = pagamento.getCadastro().getProduto().getCategoria().toString();
-        this.valorContratado = pagamento.getCadastro().getValorFinal();
+        this.cpf = ocultarDocumento(pagamento.getPedido().getCliente().getCpf());
+        this.nomeCompleto = pagamento.getPedido().getCliente().getNomeCompleto();
+        this.servico = pagamento.getPedido().getProduto().getCategoria().toString();
+        this.valorContratado = pagamento.getPedido().getValorFinal();
         this.valorPago = pagamento.getValorPago();
     }
 

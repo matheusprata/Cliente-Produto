@@ -15,17 +15,17 @@ public class PagamentoRestController implements PagamentoAPI {
     private final PagamentoService pagamentoService;
 
     @Override
-    public PagamentoResponse savePagamento(UUID idCadastro, PagamentoRequest pagamentoRequest) {
+    public PagamentoResponse savePagamento(UUID idPedido, PagamentoRequest pagamentoRequest) {
         log.info("[inicia] PagamentoRestController - savePagamento");
-        PagamentoResponse pagamentoResponse = pagamentoService.savePagamento(idCadastro, pagamentoRequest);
+        PagamentoResponse pagamentoResponse = pagamentoService.savePagamento(idPedido, pagamentoRequest);
         log.info("[finaliza] PagamentoRestController - savePagamento");
         return pagamentoResponse;
     }
     @Override
-    public List<PagamentoResponse> getAllPagamentoByCadastro(UUID idCadastro) {
-        log.info("[inicia] PagamentoRestController - getAllPagamentoByCadastro");
-        List<PagamentoResponse>  getPagamento = pagamentoService.getAllPagamentoByCadastro(idCadastro);
-        log.info("[finaliza] PagamentoRestController - getAllPagamentoByCadastro");
+    public List<PagamentoResponse> getAllPagamentoByPedido(UUID idPedido) {
+        log.info("[inicia] PagamentoRestController - getAllPagamentoByPedido");
+        List<PagamentoResponse>  getPagamento = pagamentoService.getAllPagamentoByPedido(idPedido);
+        log.info("[finaliza] PagamentoRestController - getAllPagamentoByPedido");
         return getPagamento;
     }
     @Override
