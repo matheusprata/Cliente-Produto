@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface EstoqueSpringDataInfraRepository extends JpaRepository<Estoque, UUID> {
+public interface EstoqueSpringDataJPARepository extends JpaRepository<Estoque, UUID> {
     List<Estoque> findEstoqueByProduto(Produto produto);
 }

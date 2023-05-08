@@ -18,13 +18,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Log4j2
 public class EstoqueInfraRepository implements EstoqueRepository {
-    private final EstoqueSpringDataInfraRepository estoqueSpringDataInfraRepository;
+    private final EstoqueSpringDataJPARepository estoqueSpringDataJPARepository;
 
     @Override
     public Estoque salvaEstoque(Estoque estoque) {
         log.info("[inicia] EstoqueInfraRepository - salvaEstoque");
         try {
-            estoqueSpringDataInfraRepository.save(estoque);
+            estoqueSpringDataJPARepository.save(estoque);
         }catch (DataIntegrityViolationException e){
             throw APIException.build(HttpStatus.BAD_REQUEST, "Produto já cadastrado", e);
         }
@@ -35,7 +35,7 @@ public class EstoqueInfraRepository implements EstoqueRepository {
     @Override
     public Estoque getOneEstoque(UUID idEstoque) {
         log.info("[inicia] EstoqueInfraRepository - getOneEstoque");
-        Optional<Estoque> optionalestoque = estoqueSpringDataInfraRepository.findById(idEstoque);
+        Optional<Estoque> optionalestoque = estoqueSpringDataJPARepository.findById(idEstoque);
         Estoque estoque = optionalestoque
                 .orElseThrow(
                         () -> APIException.build(HttpStatus.BAD_REQUEST, "Produto não encontrado no estoque")
@@ -47,8 +47,17 @@ public class EstoqueInfraRepository implements EstoqueRepository {
     @Override
     public List<Estoque> getEstoqueByIdProduto(Produto produto) {
         log.info("[inicia] EstoqueInfraRepository - getEstoqueByIdProduto");
-        List<Estoque> estoques = estoqueSpringDataInfraRepository.findEstoqueByProduto(produto);
+        List<Estoque> estoques = estoqueSpringDataJPARepository.findEstoqueByProduto(produto);
         log.info("[finaliza] EstoqueInfraRepository - getEstoqueByIdProduto");
         return estoques;
+    }
+
+    @Override
+    public Estoque buscaEstoqueAtravesId(UUID idEstoque) {
+        log.info("[inicia] EstoqueInfraRepository - buscaEstoqueAtravesId");
+        Estoque estoque = estoqueSpringDataJPARepository.findById(idEstoque)
+                .orElseThrow(() -> new RuntimeException("Estoque não encontrado"));
+        log.info("[finaliza] EstoqueInfraRepository - buscaEstoqueAtravesId");
+        return estoque;
     }
 }

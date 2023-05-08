@@ -1,5 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.domain;
 
+import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
@@ -40,5 +41,11 @@ public class Estoque {
         this.depositoProduto = request.getDepositoProduto();
         this.quantidadeProduto = request.getQuantidadeProduto();
         this.dataEntrada = request.getDataEntrada();
+    }
+
+    public void altera(EstoqueAlteracaoRequest estoqueAlteracaoRequest) {
+        this.produto = produto;
+        this.depositoProduto = estoqueAlteracaoRequest.getDepositoProduto();
+        this.quantidadeProduto = estoqueAlteracaoRequest.getQuantidadeProduto();
     }
 }

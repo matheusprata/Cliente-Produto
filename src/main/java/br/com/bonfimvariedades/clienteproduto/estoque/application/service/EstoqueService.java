@@ -1,5 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.application.service;
 
+import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueIdResponse;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueListResponse;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueRequest;
@@ -13,4 +14,5 @@ public interface EstoqueService {
     EstoqueIdResponse saveEstoque(EstoqueRequest request);
     Estoque getOneEstoque(UUID idEstoque);
     List<EstoqueListResponse> getByIdProduto(UUID idProduto);
+    void patchAlteraEstoque(UUID idEstoque, EstoqueAlteracaoRequest estoqueAlteracaoRequest);
 }

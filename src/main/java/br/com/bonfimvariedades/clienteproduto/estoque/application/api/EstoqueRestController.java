@@ -4,6 +4,7 @@ import br.com.bonfimvariedades.clienteproduto.estoque.application.service.Estoqu
 import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoResponse;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +41,12 @@ public class EstoqueRestController implements EstoqueAPI{
         List<EstoqueListResponse> buscaEstoqueProduto = estoqueService.getByIdProduto(idProduto);
         log.info("[finaliza] EstoqueRestController - getAllEstoqueByProduto");
         return buscaEstoqueProduto;
+    }
+
+    @Override
+    public void patchAlteraEstoque(UUID idEstoque, @Valid EstoqueAlteracaoRequest estoqueAlteracaoRequest) {
+        log.info("[inicia] - EstoqueRestController - patchAlteraEstoque");
+        estoqueService.patchAlteraEstoque(idEstoque, estoqueAlteracaoRequest);
+        log.info("[finaliza] - EstoqueRestController - patchAlteraEstoque");
     }
 }

@@ -1,5 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.application.service;
 
+import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueIdResponse;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueListResponse;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueRequest;
@@ -47,5 +49,14 @@ public class EstoqueApplicationService implements EstoqueService {
         List<Estoque> estoques = estoqueRepository.getEstoqueByIdProduto(produto);
         log.info("[finaliza] EstoqueApplicationService - getByIdProduto");
         return EstoqueListResponse.converte(estoques);
+    }
+
+    @Override
+    public void patchAlteraEstoque(UUID idEstoque, EstoqueAlteracaoRequest estoqueAlteracaoRequest) {
+        log.info("[inicia] EstoqueApplicationService - patchAlteraEstoque");
+        Estoque estoque = estoqueRepository.buscaEstoqueAtravesId(idEstoque);
+        estoque.altera(estoqueAlteracaoRequest);
+        estoqueRepository.salvaEstoque(estoque);
+        log.info("[finaliza] EstoqueApplicationService - patchAlteraEstoque");
     }
 }

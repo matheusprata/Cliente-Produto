@@ -10,4 +10,5 @@ public interface EstoqueRepository {
     Estoque salvaEstoque(Estoque estoque);
     Estoque getOneEstoque(UUID idEstoque);
     List<Estoque> getEstoqueByIdProduto(Produto produto);
+    Estoque buscaEstoqueAtravesId(UUID idEstoque);
 }
