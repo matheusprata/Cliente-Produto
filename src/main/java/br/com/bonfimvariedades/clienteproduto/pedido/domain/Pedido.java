@@ -50,7 +50,7 @@ public class Pedido {
     private LocalDate dataPedido = LocalDate.now();
     private String observacao;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.ATIVA;
+    private Status status = Status.DISPONIVEL;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
     @JsonIgnore
@@ -87,10 +87,10 @@ public class Pedido {
     }
 
     public void finalizaPedido() {
-        this.status = Status.INATIVA;
+        this.status = Status.ESGOTADO;
     }
 
-    public void ativaPedido() { this.status = Status.ATIVA; }
+    public void ativaPedido() { this.status = Status.DISPONIVEL; }
 
-    public void cancelaPedido() { this.status = Status.CANCELADA; }
+    public void cancelaPedido() { this.status = Status.AGUARDANDO_CHEGAR; }
 }

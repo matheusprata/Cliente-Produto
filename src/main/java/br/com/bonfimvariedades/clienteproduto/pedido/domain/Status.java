@@ -1,5 +1,5 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 public enum Status {
-    ATIVA, INATIVA, CANCELADA, INATIVO, ATIVO, CANCELADO;
+    DISPONIVEL, ESGOTADO, AGUARDANDO_CHEGAR, FORNECEDOR_COMPRA, PRODUTO_INEXISTENTE, RECALL;
 }

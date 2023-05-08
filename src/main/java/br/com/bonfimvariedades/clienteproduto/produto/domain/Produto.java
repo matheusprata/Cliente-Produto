@@ -1,8 +1,10 @@
 package br.com.bonfimvariedades.clienteproduto.produto.domain;
 
+import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Status;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -17,6 +20,10 @@ import java.util.UUID;
 @Getter
 @Entity
 public class Produto{
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    @JsonIgnore
+    private List<Estoque> Estoques;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProduto;
@@ -26,7 +33,7 @@ public class Produto{
     private Categoria categoria;
     private BigDecimal valorProduto;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.ATIVO;
+    private Status status = Status.DISPONIVEL;
 
     public Produto(ProdutoRequest request) {
         this.nomeProduto = request.getNomeProduto();
@@ -39,6 +46,6 @@ public class Produto{
     }
 
     public void alteraStatus() {
-        this.status = Status.INATIVO;
+        this.status = Status.ESGOTADO;
     }
 }
