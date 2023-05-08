@@ -10,8 +10,6 @@ import java.util.UUID;
 
 @Value
 public class EstoqueRequest {
-    @NotNull(message = "Necessario o id do estoque")
-    UUID idEstoque;
     @NotNull(message = "Necessario o id do produto")
     UUID idProduto;
     @NotNull

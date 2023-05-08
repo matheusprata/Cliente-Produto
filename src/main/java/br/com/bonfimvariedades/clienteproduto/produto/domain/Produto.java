@@ -21,7 +21,6 @@ import java.util.UUID;
 @Entity
 public class Produto{
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
-    @JsonIgnore
     private List<Estoque> Estoques;
 
     @Id
