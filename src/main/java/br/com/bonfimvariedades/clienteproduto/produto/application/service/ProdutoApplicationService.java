@@ -20,11 +20,11 @@ public class ProdutoApplicationService implements ProdutoService {
 
     public ProdutoIdResponse saveProduto(ProdutoRequest request) {
         log.info("[inicia] produtoApplicationService - saveproduto");
-        Produto Produto = produtoRepository.salvaProduto(new Produto(request));
+        Produto produto = produtoRepository.salvaProduto(new Produto(request));
         log.info("[finaliza] produtoApplicationService - saveproduto");
         return ProdutoIdResponse
                 .builder()
-                .idproduto(Produto.getIdProduto())
+                .idProduto(produto.getIdProduto())
                 .build();
     }
 

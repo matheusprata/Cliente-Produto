@@ -12,13 +12,13 @@ public class ProdutoResponse {
     UUID idProduto;
     String nomeProduto;
     String categoria;
-    BigDecimal valoProduto;
+    BigDecimal valorProduto;
 
     public ProdutoResponse(Produto produto) {
         this.idProduto = produto.getIdProduto();
         this.nomeProduto = produto.getNomeProduto();
         this.categoria = produto.getCategoria().toString();
-        this.valoProduto = produto.getValorProduto();
+        this.valorProduto = produto.getValorProduto();
     }
 
     public static List<ProdutoResponse> converte(List<Produto> produtos) {
