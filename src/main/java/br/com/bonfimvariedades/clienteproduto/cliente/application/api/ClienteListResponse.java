@@ -1,5 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.cliente.application.api;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -14,12 +15,14 @@ public class ClienteListResponse {
 	private String nomeCompleto;
 	private String tipoPessoa;
 	private String cpf;
+	private LocalDate dataCadastro;
 
 	public ClienteListResponse(Cliente cliente) {
 		this.idCliente = cliente.getIdCliente();
 		this.nomeCompleto = cliente.getNomeCompleto();
 		this.tipoPessoa = cliente.getTipoPessoa().toString();
 		this.cpf = cliente.getCpf().toString();
+		this.dataCadastro = cliente.getDataCadastro();
 	}
 	
 	public static List<ClienteListResponse> converte(List<Cliente> clientes) {

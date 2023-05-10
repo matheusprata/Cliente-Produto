@@ -1,6 +1,6 @@
-package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api;
+package br.com.bonfimvariedades.clienteproduto.pagamento.application.api;
 
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service.PagamentoService;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.service.PagamentoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;

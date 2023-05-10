@@ -12,7 +12,7 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.repository.OrcamentoRepository;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service.PagamentoService;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.service.PagamentoService;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.application.repository.ProdutoRepository;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
@@ -95,28 +95,28 @@ public class PedidoApplicationService implements PedidoService {
     }
 
     @Override
-    public void finalizaPedido(UUID idPedido) {
+    public void esgotadoPedido(UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - finalizaPedido");
         Pedido pedido = pedidoRepository.getOnePedido(idPedido);
-        pedido.finalizaPedido();
+        pedido.esgotadoPedido();
         pedidoRepository.savePedido(pedido);
         log.info("[finaliza] PedidoApplicationService - finalizaPedido");
     }
 
     @Override
-    public void ativaPedido(UUID idPedido) {
+    public void disponivelPedido(UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - ativaPedido");
         Pedido pedido = pedidoRepository.getOnePedido(idPedido);
-        pedido.ativaPedido();
+        pedido.disponivelPedido();
         pedidoRepository.savePedido(pedido);
         log.info("[finaliza] PedidoApplicationService - ativaPedido");
     }
 
     @Override
-    public void cancelaPedido(UUID idPedido) {
+    public void aguardandoChegarPedido(UUID idPedido) {
         log.info("[inicia] PedidoApplicationService - cancelaPedido");
         Pedido pedido = pedidoRepository.getOnePedido(idPedido);
-        pedido.cancelaPedido();
+        pedido.aguardandoChegarPedido();
         pedidoRepository.savePedido(pedido);
         log.info("[finaliza] PedidoApplicationService - cancelaPedido");
     }

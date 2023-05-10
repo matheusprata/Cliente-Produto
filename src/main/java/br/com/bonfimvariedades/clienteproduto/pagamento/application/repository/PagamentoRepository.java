@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.repository;
+package br.com.bonfimvariedades.clienteproduto.pagamento.application.repository;
 
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;

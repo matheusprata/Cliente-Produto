@@ -1,9 +1,11 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.application.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Orcamento", description = "Orcamento APIs")
 @RequestMapping("/v1/orcamento")
 public interface OrcamentoAPI {
 

@@ -29,4 +29,5 @@ public class ClienteRequest {
 	@CPF(groups = PessoaFisica.class)
 	private String cpf;
 	private Boolean aceitaTermos;
+	private LocalDate dataCadastro;
 }

@@ -1,6 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.application.api;
 
-import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteAlteracaoRequest;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-
+@Tag(name = "Estoque", description = "Estoque APIs")
 @RequestMapping("/v1/estoque")
 public interface EstoqueAPI {
 

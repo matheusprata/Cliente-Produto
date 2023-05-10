@@ -69,21 +69,21 @@ public class PedidoRestController implements PedidoAPI {
     @Override
     public void finalizaPedido(UUID idPedido) {
         log.info("[inicia] PedidoRestController - finalizaPedido");
-        pedidoService.finalizaPedido(idPedido);
+        pedidoService.esgotadoPedido(idPedido);
         log.info("[finaliza] PedidoRestController - finalizaPedido");
     }
 
     @Override
     public void ativaPedido(UUID idPedido) {
         log.info("[inicia] PedidoRestController - ativaPedido");
-        pedidoService.ativaPedido(idPedido);
+        pedidoService.disponivelPedido(idPedido);
         log.info("[finaliza] PedidoRestController - ativaPedido");
     }
 
     @Override
     public void cancelaPedido(UUID idPedido) {
         log.info("[inicia] PedidoRestController - cancelaPedido");
-        pedidoService.cancelaPedido(idPedido);
+        pedidoService.aguardandoChegarPedido(idPedido);
         log.info("[finaliza] PedidoRestController - cancelaPedido");
     }
 }

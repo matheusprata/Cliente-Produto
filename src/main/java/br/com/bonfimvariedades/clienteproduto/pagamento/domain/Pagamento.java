@@ -2,7 +2,7 @@ package br.com.bonfimvariedades.clienteproduto.pagamento.domain;
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoRequest;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.api.PagamentoRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

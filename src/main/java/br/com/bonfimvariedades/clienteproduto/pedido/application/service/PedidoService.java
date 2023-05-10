@@ -17,7 +17,7 @@ public interface PedidoService {
     PedidoDetalhadoResponse getOnePedido(UUID idPedido);
     void deletePedido(UUID idPedido);
     void updatePedido(UUID idPedido, PedidoAlteracaoRequest pedidoAlteracaoRequest);
-    void finalizaPedido(UUID idPedido);
-    void ativaPedido(UUID idPedido);
-    void cancelaPedido(UUID idPedido);
+    void esgotadoPedido(UUID idPedido);
+    void disponivelPedido(UUID idPedido);
+    void aguardandoChegarPedido(UUID idPedido);
 }
