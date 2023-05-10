@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.cliente.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
@@ -55,10 +56,11 @@ public class Cliente {
 	private Boolean aceitaTermos = true;
 	private LocalDate dataDoPedido;
 	private LocalDate dataUltimaAlteracao;
+	private LocalDate dataCadastro;
 
-	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
 	@JsonIgnore
-	Pedido pedido;
+	List<Pedido> pedidos;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();
@@ -69,6 +71,7 @@ public class Cliente {
 		this.dataNascimento = clienteRequest.getDataNascimento();
 		this.estadoCivil = clienteRequest.getEstadoCivil();
 		this.cpf = clienteRequest.getCpf();
+		this.dataCadastro = clienteRequest.getDataCadastro();
 	}
 
 	public Cliente(OrcamentoRequest orcamentoRequest) {

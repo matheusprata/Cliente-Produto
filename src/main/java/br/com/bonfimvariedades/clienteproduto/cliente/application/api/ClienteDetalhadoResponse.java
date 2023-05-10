@@ -1,5 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.cliente.application.api;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
@@ -16,6 +17,7 @@ public class ClienteDetalhadoResponse {
 	private String tipoPessoa;
 	private String cpf;
 	private String estadoCivil;
+	private LocalDate dataCadastro;
 
 	public ClienteDetalhadoResponse(Cliente cliente){
 		this.idCliente = cliente.getIdCliente();
@@ -26,6 +28,7 @@ public class ClienteDetalhadoResponse {
 		this.email = cliente.getEmail();
 		this.sexo = cliente.getSexo().toString();
 		this.estadoCivil = cliente.getEstadoCivil().toString();
+		this.dataCadastro = cliente.getDataCadastro();
 	}
 	
 }

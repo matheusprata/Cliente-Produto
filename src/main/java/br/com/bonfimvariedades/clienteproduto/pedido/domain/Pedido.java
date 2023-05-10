@@ -30,7 +30,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idPedido;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     @JsonIgnore
     private Cliente cliente;
@@ -86,11 +86,9 @@ public class Pedido {
         this.observacao = pedidoAlteracaoRequest.getObservacao().toUpperCase();
     }
 
-    public void finalizaPedido() {
-        this.status = Status.ESGOTADO;
-    }
+    public void esgotadoPedido() {this.status = Status.ESGOTADO; }
 
-    public void ativaPedido() { this.status = Status.DISPONIVEL; }
+    public void disponivelPedido() { this.status = Status.DISPONIVEL; }
 
-    public void cancelaPedido() { this.status = Status.AGUARDANDO_CHEGAR; }
+    public void aguardandoChegarPedido() { this.status = Status.AGUARDANDO_CHEGAR; }
 }

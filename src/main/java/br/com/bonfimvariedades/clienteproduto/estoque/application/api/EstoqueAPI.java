@@ -1,6 +1,5 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.application.api;
 
-import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteAlteracaoRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
