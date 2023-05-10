@@ -1,12 +1,12 @@
-package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service;
+package br.com.bonfimvariedades.clienteproduto.pagamento.application.service;
 
 import br.com.bonfimvariedades.clienteproduto.handler.APIException;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.repository.PedidoRepository;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoRequest;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoResponse;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.repository.PagamentoRepository;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.api.PagamentoRequest;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.api.PagamentoResponse;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.repository.PagamentoRepository;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

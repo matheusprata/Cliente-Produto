@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Data
-public class RelatorioPedidosAtivasResponse {
+public class RelatorioPedidosDisponivelResponse {
     UUID idPedido;
     String servico;
     String cpf;
@@ -23,7 +23,7 @@ public class RelatorioPedidosAtivasResponse {
     BigDecimal valorFinal;
     LocalDate dataPedido;
 
-    public RelatorioPedidosAtivasResponse(Pedido pedido) {
+    public RelatorioPedidosDisponivelResponse(Pedido pedido) {
         this.idPedido = pedido.getIdPedido();
         this.cpf = pedido.getCliente().getCpf();
         this.nomeCompleto = pedido.getCliente().getNomeCompleto();
@@ -33,9 +33,9 @@ public class RelatorioPedidosAtivasResponse {
         this.dataPedido = pedido.getDataPedido();
     }
 
-    public static List<RelatorioPedidosAtivasResponse> convert(List<Pedido> pedidos) {
+    public static List<RelatorioPedidosDisponivelResponse> convert(List<Pedido> pedidos) {
         return pedidos.stream()
-                .map(RelatorioPedidosAtivasResponse::new)
+                .map(RelatorioPedidosDisponivelResponse::new)
                 .collect(Collectors.toList());
     }
 }

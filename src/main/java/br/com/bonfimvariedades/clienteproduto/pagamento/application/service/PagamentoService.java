@@ -1,9 +1,9 @@
-package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service;
+package br.com.bonfimvariedades.clienteproduto.pagamento.application.service;
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoRequest;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api.PagamentoResponse;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.api.PagamentoRequest;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.api.PagamentoResponse;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 
 import java.util.List;

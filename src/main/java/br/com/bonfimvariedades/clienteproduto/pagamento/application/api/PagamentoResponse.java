@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.api;
+package br.com.bonfimvariedades.clienteproduto.pagamento.application.api;
 
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import lombok.Value;

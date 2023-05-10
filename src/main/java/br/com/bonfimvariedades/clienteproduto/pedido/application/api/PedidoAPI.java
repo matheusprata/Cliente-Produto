@@ -5,6 +5,7 @@ import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.Ped
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.response.PedidoDetalhadoResponse;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.response.PedidoIdResponse;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.response.PedidoListResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@Tag(name = "Pedido", description = "Pedido APIs")
 @RequestMapping("/v1/pedido")
 public interface PedidoAPI {
 

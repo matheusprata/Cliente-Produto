@@ -60,4 +60,12 @@ public class EstoqueInfraRepository implements EstoqueRepository {
         log.info("[finaliza] EstoqueInfraRepository - buscaEstoqueAtravesId");
         return estoque;
     }
+
+    @Override
+    public List<Estoque> getAllEstoque() {
+        log.info("[inicia] produtoInfraRepository - getAllProdutos");
+        List<Estoque> estoques = estoqueSpringDataJPARepository.findAll();
+        log.info("[finaliza] produtoInfraRepository - getAllProdutos");
+        return estoques;
+    }
 }

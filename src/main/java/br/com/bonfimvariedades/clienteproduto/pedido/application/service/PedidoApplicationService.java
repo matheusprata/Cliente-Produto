@@ -12,7 +12,7 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.repository.OrcamentoRepository;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.appiclation.service.PagamentoService;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.service.PagamentoService;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.application.repository.ProdutoRepository;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;

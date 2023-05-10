@@ -1,7 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.relatorios.application.api;
 
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioClientesResponse;
-import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioPedidosAtivasResponse;
+import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioEstoquesDisponivelResponse;
+import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioPedidosDisponivelResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,11 @@ public interface RelatoriosApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<RelatorioClientesResponse> getAllClientes();
 
-    @GetMapping("/pedidos-ativas")
+    @GetMapping("/pedidos-ativos")
     @ResponseStatus(code = HttpStatus.OK)
-    List<RelatorioPedidosAtivasResponse> getAllPedidos();
+    List<RelatorioPedidosDisponivelResponse> getAllPedidos();
+
+    @GetMapping("/estoques")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<RelatorioEstoquesDisponivelResponse> getAllEstoques();
 }
