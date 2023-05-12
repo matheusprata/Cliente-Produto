@@ -27,7 +27,11 @@ public interface FuncionarioApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<FuncionarioResponse> getAllFuncionarios();
 
-    @PatchMapping("/{idFuncionario}")
+    @PatchMapping("demite/{idFuncionario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void inativaFuncionario(@PathVariable UUID idFuncionario);
+    void demiteFuncionario(@PathVariable UUID idFuncionario);
+
+    @PatchMapping("recontratar/{idFuncionario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void ativaFuncionario(@PathVariable UUID idFuncionario);
 }

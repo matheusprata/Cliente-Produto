@@ -51,12 +51,15 @@ public class Funcionario {
         this.cargoFuncionario = updateRequest.getCargoFuncionario().toUpperCase();
         this.cnh = updateRequest.getCnh();
         this.validadeCnh = updateRequest.getValidadeCnh();
-        this.dataReadmissao = updateRequest.getDataReadmissao();
-        this.statusFuncionario = statusFuncionario.ATIVO;
     }
 
     public void demitido() {
         this.statusFuncionario = statusFuncionario.DEMITIDO;
         this.dataDemissao = getDataDemissao().now();
+    }
+
+    public void ativa() {
+        this.statusFuncionario = statusFuncionario.ATIVO;
+        this.dataReadmissao = getDataDemissao().now();
     }
 }

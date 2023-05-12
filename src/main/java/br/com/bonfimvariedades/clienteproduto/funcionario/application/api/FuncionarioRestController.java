@@ -46,9 +46,15 @@ public class FuncionarioRestController implements FuncionarioApi {
     }
 
     @Override
-    public void inativaFuncionario(UUID idFuncionario) {
+    public void demiteFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioRestController -  inativaFuncionario");
         funcionarioService.demitidoFuncionario(idFuncionario);
         log.info("[finaliza] FuncionarioRestController -  inativaFuncionario");
+    }
+    @Override
+    public void ativaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionarioRestController -  ativaFuncionario");
+        funcionarioService.ativaFuncionario(idFuncionario);
+        log.info("[finaliza] FuncionarioRestController -  ativaFuncionario");
     }
 }

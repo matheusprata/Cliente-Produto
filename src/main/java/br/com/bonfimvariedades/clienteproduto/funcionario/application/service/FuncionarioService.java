@@ -14,4 +14,5 @@ public interface FuncionarioService {
     void update(UUID idFuncionario, FuncionarioUpdateResquest updateRequest);
     List<FuncionarioResponse> getAllFuncionarios();
     void demitidoFuncionario(UUID idFuncionario);
+    void ativaFuncionario(UUID idFuncionario);
 }

@@ -17,5 +17,4 @@ public class FuncionarioUpdateResquest {
     LocalDate validadeCnh;
     String cargoFuncionario;
     String cnh;
-    LocalDate dataReadmissao;
 }
