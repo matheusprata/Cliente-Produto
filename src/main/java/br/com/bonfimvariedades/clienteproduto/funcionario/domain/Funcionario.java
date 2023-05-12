@@ -60,6 +60,6 @@ public class Funcionario {
 
     public void ativa() {
         this.statusFuncionario = statusFuncionario.ATIVO;
-        this.dataReadmissao = getDataDemissao().now();
+        this.dataReadmissao = getDataReadmissao().now();
     }
 }

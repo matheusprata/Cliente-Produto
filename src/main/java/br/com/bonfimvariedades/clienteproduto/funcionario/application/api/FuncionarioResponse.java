@@ -23,6 +23,10 @@ public class FuncionarioResponse {
     String cnh;
     LocalDate validadeCnh;
     LocalDate dataAdmissao;
+    LocalDate dataReadmissao;
+    LocalDate dataDemissao;
+    StatusFuncionario statusFuncionario;
+
 
     public FuncionarioResponse(Funcionario funcionario) {
         this.idFuncionario = funcionario.getIdFuncionario();
@@ -32,6 +36,9 @@ public class FuncionarioResponse {
         this.cnh = funcionario.getCnh();
         this.validadeCnh = funcionario.getValidadeCnh();
         this.dataAdmissao = funcionario.getDataAdmissao();
+        this.dataReadmissao = funcionario.getDataReadmissao();
+        this.dataDemissao = funcionario.getDataDemissao();
+        this.statusFuncionario = funcionario.getStatusFuncionario();
     }
 
     public static List<FuncionarioResponse> converte(List<Funcionario> funcionarios) {
