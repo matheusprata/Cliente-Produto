@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,7 +29,6 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
         log.info("[finaliza] FuncionarioInfraRepository - save ");
         return funcionario;
     }
-
     @Override
     public Funcionario getFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioInfraRepository - getFuncionario ");
@@ -40,7 +38,6 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
         log.info("[finaliza] FuncionarioInfraRepository - getFuncionario ");
         return funcionario;
     }
-
     @Override
     public List<Funcionario> getAllFuncionarios() {
         log.info("[inicia] FuncionarioInfraRepository - getAllFuncionarios ");

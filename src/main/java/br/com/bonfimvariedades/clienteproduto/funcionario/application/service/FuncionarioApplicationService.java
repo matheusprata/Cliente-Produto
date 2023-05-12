@@ -9,7 +9,6 @@ import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -26,7 +25,6 @@ public class FuncionarioApplicationService implements FuncionarioService {
         log.info("[finaliza] FuncionarioApplicationService - saveFuncionario");
         return FuncionarioIdResponse.builder().idFuncionario(funcionario.getIdFuncionario()).build();
     }
-
     @Override
     public FuncionarioResponse getFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioApplicationService - getFuncionario");
@@ -34,7 +32,6 @@ public class FuncionarioApplicationService implements FuncionarioService {
         log.info("[finaliza] FuncionarioApplicationService - getFuncionario");
         return new FuncionarioResponse(funcionario);
     }
-
     @Override
     public void update(UUID idFuncionario, FuncionarioUpdateResquest updateRequest) {
         log.info("[inicia] FuncionarioApplicationService - update");
@@ -43,7 +40,6 @@ public class FuncionarioApplicationService implements FuncionarioService {
         funcionarioRepository.saveFuncionario(funcionario);
         log.info("[finaliza] FuncionarioApplicationService - update");
     }
-
     @Override
     public List<FuncionarioResponse> getAllFuncionarios() {
         log.info("[inicia] FuncionarioApplicationService - getAllFuncionarios");
@@ -51,7 +47,6 @@ public class FuncionarioApplicationService implements FuncionarioService {
         log.info("[finaliza] FuncionarioApplicationService - getAllFuncionarios");
         return FuncionarioResponse.converte(funcionarios);
     }
-
     @Override
     public void demitidoFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioApplicationService - DemitidoFuncionario");
@@ -60,7 +55,6 @@ public class FuncionarioApplicationService implements FuncionarioService {
         funcionarioRepository.saveFuncionario(funcionario);
         log.info("[finaliza] FuncionarioApplicationService - DemitidoFuncionario");
     }
-
     @Override
     public void ativaFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioApplicationService - ativaFuncionario");

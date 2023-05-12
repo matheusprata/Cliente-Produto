@@ -4,7 +4,6 @@ import br.com.bonfimvariedades.clienteproduto.funcionario.application.service.Fu
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +20,6 @@ public class FuncionarioRestController implements FuncionarioApi {
         log.info("[finaliza] FuncionarioRestController -  saveFuncionario");
         return idResponse;
     }
-
     @Override
     public FuncionarioResponse getFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioRestController -  getFuncionario");
@@ -29,14 +27,12 @@ public class FuncionarioRestController implements FuncionarioApi {
         log.info("[finaliza] FuncionarioRestController -  getFuncionario");
         return response;
     }
-
     @Override
     public void updateFuncionario(UUID idFuncionario, FuncionarioUpdateResquest updateRequest) {
         log.info("[inicia] FuncionarioRestController -  updateFuncionario");
         funcionarioService.update(idFuncionario, updateRequest);
         log.info("[finaliza] FuncionarioRestController -  updateFuncionario");
     }
-
     @Override
     public List<FuncionarioResponse> getAllFuncionarios() {
         log.info("[inicia] FuncionarioRestController -  getAllFuncionarios");
@@ -44,7 +40,6 @@ public class FuncionarioRestController implements FuncionarioApi {
         log.info("[finaliza] FuncionarioRestController -  getAllFuncionarios");
         return  funcionarioes;
     }
-
     @Override
     public void demiteFuncionario(UUID idFuncionario) {
         log.info("[inicia] FuncionarioRestController -  inativaFuncionario");

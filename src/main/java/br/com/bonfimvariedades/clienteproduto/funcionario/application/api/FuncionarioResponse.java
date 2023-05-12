@@ -1,15 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.funcionario.application.api;
 
-import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.StatusFuncionario;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
-import org.hibernate.validator.constraints.br.CPF;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -27,7 +20,6 @@ public class FuncionarioResponse {
     LocalDate dataDemissao;
     StatusFuncionario statusFuncionario;
 
-
     public FuncionarioResponse(Funcionario funcionario) {
         this.idFuncionario = funcionario.getIdFuncionario();
         this.nomeCompleto = funcionario.getNomeCompleto();
@@ -40,7 +32,6 @@ public class FuncionarioResponse {
         this.dataDemissao = funcionario.getDataDemissao();
         this.statusFuncionario = funcionario.getStatusFuncionario();
     }
-
     public static List<FuncionarioResponse> converte(List<Funcionario> funcionarios) {
         return funcionarios
                 .stream()

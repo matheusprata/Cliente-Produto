@@ -4,7 +4,6 @@ import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.Funcio
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioResponse;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioResquest;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioUpdateResquest;
-
 import java.util.List;
 import java.util.UUID;
 

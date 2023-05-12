@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -45,19 +44,16 @@ public class Funcionario {
         this.validadeCnh = resquest.getValidadeCnh();
         this.dataAdmissao = resquest.getDataAdmissao();
     }
-
     public void altera(FuncionarioUpdateResquest updateRequest) {
         this.nomeCompleto = updateRequest.getNomeCompleto().toUpperCase();
         this.cargoFuncionario = updateRequest.getCargoFuncionario().toUpperCase();
         this.cnh = updateRequest.getCnh();
         this.validadeCnh = updateRequest.getValidadeCnh();
     }
-
     public void demitido() {
         this.statusFuncionario = statusFuncionario.DEMITIDO;
         this.dataDemissao = getDataDemissao().now();
     }
-
     public void ativa() {
         this.statusFuncionario = statusFuncionario.ATIVO;
         this.dataReadmissao = getDataReadmissao().now();
