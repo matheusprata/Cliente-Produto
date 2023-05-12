@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.br.CPF;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -21,4 +22,6 @@ public class OrcamentoRequest extends SolicitacaoRequest {
     String telefone;
     @NotNull(message = "Email Obrigatório!")
     String email;
+    @NotNull(message = "Funcionario Obrigatório!")
+    UUID idFuncionario;
 }

@@ -3,6 +3,8 @@ package br.com.bonfimvariedades.clienteproduto.funcionario.domain;
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioResquest;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioUpdateResquest;
+import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -20,6 +23,11 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFuncionario;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @JsonIgnore
+    private List<Orcamento> orcamentos;
+
     private String nomeCompleto;
     @NotBlank(message = "Campo Obrigatório!")
     @CPF(groups = PessoaFisica.class, message = "CPF inválido!")

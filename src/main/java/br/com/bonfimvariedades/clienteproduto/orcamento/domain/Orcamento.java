@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.orcamento.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.annotation.constraints.Valid;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,9 +31,15 @@ public class Orcamento {
     @JsonIgnore
     private Cliente cliente;
 
-    @OneToOne
+    @ManyToOne
     @JsonIgnore
+    @JoinColumn(name = "produto_id")
     private Produto produto;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
 
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
@@ -45,9 +53,10 @@ public class Orcamento {
     private LocalDate validade = dataOrcamento.plusDays(5);
     private BigDecimal valorFinal;
 
-    public Orcamento(Cliente cliente, Produto produto, OrcamentoRequest orcamentoRequest) {
+    public Orcamento(Cliente cliente, Produto produto, Funcionario funcionario, OrcamentoRequest orcamentoRequest) {
         this.cliente = cliente;
         this.produto = produto;
+        this.funcionario = funcionario;
         this.tipoPagamento = orcamentoRequest.getTipoPagamento();
         this.valorEntrada = orcamentoRequest.getValorEntrada();
         this.desconto = orcamentoRequest.getDesconto();

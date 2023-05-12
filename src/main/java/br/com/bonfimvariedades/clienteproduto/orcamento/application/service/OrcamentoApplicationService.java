@@ -2,6 +2,8 @@ package br.com.bonfimvariedades.clienteproduto.orcamento.application.service;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.application.service.ClienteService;
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.funcionario.application.repository.FuncionarioRepository;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoResponse;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.repository.OrcamentoRepository;
@@ -21,14 +23,16 @@ public class OrcamentoApplicationService implements OrcamentoService {
     private final OrcamentoRepository orcamentoRepository;
     private final ClienteService clienteService;
     private final ProdutoRepository produtoRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
     @Override
     public OrcamentoResponse saveOrcamento(OrcamentoRequest orcamentoRequest) {
         log.info("[inicia] OrcamentoApplicationService - saveOrcamento");
         Produto produto = produtoRepository.getOneProduto(orcamentoRequest.getIdProduto());
+        Funcionario funcionario = funcionarioRepository.getFuncionario(orcamentoRequest.getIdFuncionario());
         validaSolicitacao(orcamentoRequest, produto);
         Cliente orcamentoByCliente = clienteService.getOrcamentoByCliente(orcamentoRequest);
-        Orcamento orcamento = orcamentoRepository.saveOrcamento(new Orcamento(orcamentoByCliente, produto, orcamentoRequest));
+        Orcamento orcamento = orcamentoRepository.saveOrcamento(new Orcamento(orcamentoByCliente, produto, funcionario, orcamentoRequest));
         log.info("[finaliza] OrcamentoApplicationService - saveOrcamento");
         return new OrcamentoResponse(orcamento);
     }
