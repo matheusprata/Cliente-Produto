@@ -2,6 +2,12 @@ package br.com.bonfimvariedades.clienteproduto.pedido.application.service;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.application.repository.ClienteRepository;
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.funcionario.application.repository.FuncionarioRepository;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
+import br.com.bonfimvariedades.clienteproduto.orcamento.application.repository.OrcamentoRepository;
+import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.application.service.PagamentoService;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.response.PedidoDetalhadoResponse;
@@ -10,15 +16,12 @@ import br.com.bonfimvariedades.clienteproduto.pedido.application.api.response.Pe
 import br.com.bonfimvariedades.clienteproduto.pedido.application.repository.PedidoRepository;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
-import br.com.bonfimvariedades.clienteproduto.orcamento.application.repository.OrcamentoRepository;
-import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
-import br.com.bonfimvariedades.clienteproduto.pagamento.application.service.PagamentoService;
-import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.application.repository.ProdutoRepository;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -35,14 +38,16 @@ public class PedidoApplicationService implements PedidoService {
     private final ProdutoRepository produtoRepository;
     private final PagamentoService pagamentoService;
     private final OrcamentoRepository orcamentoRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
     @Override
     public PedidoIdResponse savePedido(PedidoRequest pedidoRequest) {
         log.info("[inicia] PedidoApplicationService - savePedido");
         Produto produto = produtoRepository.getOneProduto(pedidoRequest.getIdProduto());
+        Funcionario funcionario = funcionarioRepository.getFuncionario(pedidoRequest.getIdFuncionario());
         validaSolicitacao(pedidoRequest, produto);
         Cliente cliente = clienteRepository.buscaClienteAtravesId(pedidoRequest.getIdCliente());
-        Pedido pedido = pedidoRepository.savePedido(new Pedido(cliente, produto, pedidoRequest));
+        Pedido pedido = pedidoRepository.savePedido(new Pedido(cliente, produto, funcionario, pedidoRequest));
         if (pedidoRequest.getValorEntrada().compareTo(BigDecimal.ZERO)>0){
             Pagamento pagamento = pagamentoService.savePagamentoByEntrada(pedido, TipoPagamento.valueOf(pedidoRequest.getTipoPagamentoEntrada()));
         }

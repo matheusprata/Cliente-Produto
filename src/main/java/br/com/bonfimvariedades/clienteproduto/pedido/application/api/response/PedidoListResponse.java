@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 @Value
 public class PedidoListResponse {
     UUID idPedido;
+    UUID idFuncionario;
+    String nomeFuncionario;
     String cpf;
     TipoPagamento tipoPagamento;
     BigDecimal valorEntrada;
@@ -32,6 +34,8 @@ public class PedidoListResponse {
 
     public PedidoListResponse(Pedido pedido) {
         this.idPedido = pedido.getIdPedido();
+        this.idFuncionario = pedido.getFuncionario().getIdFuncionario();
+        this.nomeFuncionario = pedido.getFuncionario().getNomeCompleto();
         this.cpf = pedido.getCliente().getCpf();
         this.tipoPagamento = pedido.getTipoPagamento();
         this.valorEntrada = pedido.getValorEntrada();

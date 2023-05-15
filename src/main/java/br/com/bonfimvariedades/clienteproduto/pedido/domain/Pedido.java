@@ -62,9 +62,10 @@ public class Pedido {
     @JsonIgnore
     private List<Pagamento> pagamentos;
 
-    public Pedido(Cliente cliente, Produto produto, PedidoRequest pedidoRequest) {
+    public Pedido(Cliente cliente, Produto produto, Funcionario funcionario, PedidoRequest pedidoRequest) {
         this.cliente = cliente;
         this.produto = produto;
+        this.funcionario = funcionario;
         this.tipoPagamento = pedidoRequest.getTipoPagamento();
         this.valorEntrada = pedidoRequest.getValorEntrada();
         this.desconto = pedidoRequest.getDesconto();
@@ -76,6 +77,7 @@ public class Pedido {
     public Pedido(Orcamento orcamento) {
         this.cliente = orcamento.getCliente();
         this.produto = orcamento.getProduto();
+        this.funcionario = orcamento.getFuncionario();
         this.tipoPagamento = orcamento.getTipoPagamento();
         this.valorEntrada = orcamento.getValorEntrada();
         this.desconto = orcamento.getDesconto();
