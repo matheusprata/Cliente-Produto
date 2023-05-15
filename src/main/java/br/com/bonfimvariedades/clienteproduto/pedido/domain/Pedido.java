@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoRequest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
@@ -38,6 +39,11 @@ public class Pedido {
     @OneToOne
     @JsonIgnore
     private Produto produto;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
 
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;

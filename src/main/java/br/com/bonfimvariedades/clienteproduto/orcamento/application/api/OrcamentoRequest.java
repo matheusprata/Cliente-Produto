@@ -22,6 +22,4 @@ public class OrcamentoRequest extends SolicitacaoRequest {
     String telefone;
     @NotNull(message = "Email Obrigatório!")
     String email;
-    @NotNull(message = "Funcionario Obrigatório!")
-    UUID idFuncionario;
 }

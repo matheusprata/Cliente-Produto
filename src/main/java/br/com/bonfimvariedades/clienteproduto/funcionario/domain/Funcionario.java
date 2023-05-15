@@ -4,6 +4,7 @@ import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioResquest;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioUpdateResquest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
+import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -27,6 +28,10 @@ public class Funcionario {
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
     @JsonIgnore
     private List<Orcamento> orcamentos;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
+    @JsonIgnore
+    private List<Pedido> pedidos;
 
     private String nomeCompleto;
     @NotBlank(message = "Campo Obrigatório!")
