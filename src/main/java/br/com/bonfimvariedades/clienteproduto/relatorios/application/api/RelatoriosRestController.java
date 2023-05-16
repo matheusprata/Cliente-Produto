@@ -2,12 +2,12 @@ package br.com.bonfimvariedades.clienteproduto.relatorios.application.api;
 
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioClientesResponse;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioEstoquesDisponivelResponse;
+import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioFuncionariosDisponivelResponse;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioPedidosDisponivelResponse;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.service.RelatoriosService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController
@@ -40,5 +40,11 @@ public class RelatoriosRestController implements RelatoriosApi {
         return response;
     }
 
-
+    @Override
+    public List<RelatorioFuncionariosDisponivelResponse> getAllFuncionarios() {
+        log.info("[inicia] - RelatoriosRestController - getAllFuncionarios");
+        List<RelatorioFuncionariosDisponivelResponse> response = relatoriosService.getAllFuncionariosDisponiveis();
+        log.info("[finaliza] - RelatoriosRestController - getAllFuncionarios");
+        return response;
+    }
 }

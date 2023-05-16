@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.application.repository;
 
 import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 
 import java.util.List;
