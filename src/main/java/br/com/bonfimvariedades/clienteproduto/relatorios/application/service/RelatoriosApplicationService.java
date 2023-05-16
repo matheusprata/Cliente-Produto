@@ -4,10 +4,13 @@ import br.com.bonfimvariedades.clienteproduto.cliente.application.repository.Cli
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.repository.EstoqueRepository;
 import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
+import br.com.bonfimvariedades.clienteproduto.funcionario.application.repository.FuncionarioRepository;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.repository.PedidoRepository;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioEstoquesDisponivelResponse;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioClientesResponse;
+import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioFuncionariosDisponivelResponse;
 import br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response.RelatorioPedidosDisponivelResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,6 +25,7 @@ public class RelatoriosApplicationService implements RelatoriosService {
     private final ClienteRepository clienteRepository;
     private final PedidoRepository pedidoRepository;
     private final EstoqueRepository estoqueRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
     @Override
     public List<RelatorioClientesResponse> getAllClientes() {
@@ -45,5 +49,13 @@ public class RelatoriosApplicationService implements RelatoriosService {
         List<Estoque> estoques = estoqueRepository.getAllEstoque();
         log.info("[Finaliza] RelatoriosApplicationService - getAllEstoquesDisponiveis");
         return RelatorioEstoquesDisponivelResponse.convert(estoques);
+    }
+
+    @Override
+    public List<RelatorioFuncionariosDisponivelResponse> getAllFuncionariosDisponiveis() {
+        log.info("[inicia] RelatoriosApplicationService - getAllFuncionariosDisponiveis");
+        List<Funcionario> funcionarios = funcionarioRepository.getAllFuncionarios();
+        log.info("[Finaliza] RelatoriosApplicationService - getAllFuncionariosDisponiveis");
+        return RelatorioFuncionariosDisponivelResponse.convert(funcionarios);
     }
 }

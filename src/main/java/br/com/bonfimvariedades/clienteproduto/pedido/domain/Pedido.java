@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoRequest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
@@ -39,6 +40,11 @@ public class Pedido {
     @JsonIgnore
     private Produto produto;
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
+
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
     private BigDecimal valorEntrada;
@@ -56,9 +62,10 @@ public class Pedido {
     @JsonIgnore
     private List<Pagamento> pagamentos;
 
-    public Pedido(Cliente cliente, Produto produto, PedidoRequest pedidoRequest) {
+    public Pedido(Cliente cliente, Produto produto, Funcionario funcionario, PedidoRequest pedidoRequest) {
         this.cliente = cliente;
         this.produto = produto;
+        this.funcionario = funcionario;
         this.tipoPagamento = pedidoRequest.getTipoPagamento();
         this.valorEntrada = pedidoRequest.getValorEntrada();
         this.desconto = pedidoRequest.getDesconto();
@@ -70,6 +77,7 @@ public class Pedido {
     public Pedido(Orcamento orcamento) {
         this.cliente = orcamento.getCliente();
         this.produto = orcamento.getProduto();
+        this.funcionario = orcamento.getFuncionario();
         this.tipoPagamento = orcamento.getTipoPagamento();
         this.valorEntrada = orcamento.getValorEntrada();
         this.desconto = orcamento.getDesconto();

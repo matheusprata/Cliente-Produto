@@ -12,6 +12,8 @@ import java.util.UUID;
 @Value
 public class PedidoDetalhadoResponse {
     UUID idPedido;
+    UUID idFuncionario;
+    String nomeFuncionario;
     String cpf;
     TipoPagamento tipoPagamento;
     BigDecimal valorEntrada;
@@ -26,15 +28,17 @@ public class PedidoDetalhadoResponse {
 
     public PedidoDetalhadoResponse(Pedido pedido) {
         this.idPedido = pedido.getIdPedido();
+        this.idFuncionario = pedido.getFuncionario().getIdFuncionario();
+        this.nomeFuncionario = pedido.getFuncionario().getNomeCompleto();
         this.cpf = pedido.getCliente().getCpf();
-        this.tipoPagamento = pedido.getTipoPagamento();
-        this.valorEntrada = pedido.getValorEntrada();
-        this.quantidadeParcelas = pedido.getQuantidadeParcelas();
+        this.nomeCompleto = pedido.getCliente().getNomeCompleto();
+        this.dataPedido = pedido.getDataPedido();
         this.valorProduto = pedido.getProduto().getValorProduto();
+        this.valorEntrada = pedido.getValorEntrada();
+        this.tipoPagamento = pedido.getTipoPagamento();
+        this.quantidadeParcelas = pedido.getQuantidadeParcelas();
         this.desconto =  calculaDesconto(pedido.getDesconto(), pedido.getProduto().getValorProduto()) ;
         this.valorFinal = pedido.getValorFinal();
-        this.dataPedido = pedido.getDataPedido();
-        this.nomeCompleto = pedido.getCliente().getNomeCompleto();
         this.observacao = pedido.getObservacao();
         this.status = pedido.getStatus().toString();
     }

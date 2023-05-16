@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.produto.domain;
 
 import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
+import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Status;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
@@ -20,8 +21,12 @@ import java.util.UUID;
 @Getter
 @Entity
 public class Produto{
+
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
     private List<Estoque> Estoques;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    private List<Orcamento> orcamentos;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

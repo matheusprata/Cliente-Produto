@@ -15,6 +15,8 @@ import java.util.UUID;
 @Data
 @ValidSolicitacaoRequest
 public class SolicitacaoRequest {
+    @NotNull(message = "Funcionario Obrigatório!")
+    UUID idFuncionario;
     @NotNull(message = "Necessario o id do produto")
     UUID idProduto;
     @NotNull(message = "O tipo de pagamento não pode ser nulo")

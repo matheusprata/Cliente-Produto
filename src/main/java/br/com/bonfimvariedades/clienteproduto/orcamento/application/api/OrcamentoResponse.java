@@ -6,10 +6,13 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 public class OrcamentoResponse {
     Long idOrcamento;
+    UUID idFuncionario;
+    String nomeFuncionario;
     String cpf;
     String nomeCompleto;
     TipoPagamento tipoPagamento;
@@ -23,8 +26,10 @@ public class OrcamentoResponse {
 
     public OrcamentoResponse(Orcamento orcamento) {
         this.idOrcamento = orcamento.getIdOrcamento();
-        this.cpf = orcamento.getCliente().getCpf();
+        this.idFuncionario = orcamento.getFuncionario().getIdFuncionario();
+        this.nomeFuncionario = orcamento.getFuncionario().getNomeCompleto();
         this.nomeCompleto = orcamento.getCliente().getNomeCompleto();
+        this.cpf = orcamento.getCliente().getCpf();
         this.tipoPagamento = orcamento.getTipoPagamento();
         this.dataOrcamento = orcamento.getDataOrcamento();
         this.valorEntrada = orcamento.getValorEntrada();

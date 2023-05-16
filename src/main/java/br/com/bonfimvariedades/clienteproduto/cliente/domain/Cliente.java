@@ -40,7 +40,6 @@ public class Cliente {
 	private String nomeCompleto;
 	@Email
 	@Column(unique = true)
-	@NotNull(message = "Campo Email Obrigatório!")
 	private String email;
 	private String celular;
 	private String telefone;
