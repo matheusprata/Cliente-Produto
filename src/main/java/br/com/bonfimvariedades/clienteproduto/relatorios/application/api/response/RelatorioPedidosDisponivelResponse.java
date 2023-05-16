@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 @Data
 public class RelatorioPedidosDisponivelResponse {
     UUID idPedido;
-    String servico;
+    UUID idFuncionario;
+    String nomeFuncionario;
     String cpf;
     String nomeCompleto;
     TipoPagamento tipoPagamento;
-    BigDecimal valorProduto;
     BigDecimal desconto;
     BigDecimal valorEntrada;
     BigDecimal valorFinal;
@@ -25,6 +25,8 @@ public class RelatorioPedidosDisponivelResponse {
 
     public RelatorioPedidosDisponivelResponse(Pedido pedido) {
         this.idPedido = pedido.getIdPedido();
+        this.idFuncionario = pedido.getFuncionario().getIdFuncionario();
+        this.nomeFuncionario = pedido.getFuncionario().getNomeCompleto();
         this.cpf = pedido.getCliente().getCpf();
         this.nomeCompleto = pedido.getCliente().getNomeCompleto();
         this.tipoPagamento = pedido.getTipoPagamento();
