@@ -8,10 +8,13 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -33,29 +36,39 @@ public class Funcionario {
     @JsonIgnore
     private List<Pedido> pedidos;
 
+    @NotBlank(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
-    @NotBlank(message = "Campo Obrigatório!")
+    @NotBlank(message = "Campo CPF Obrigatório!")
     @CPF(groups = PessoaFisica.class, message = "CPF inválido!")
     @Column(unique = true, length = 14, updatable = false)
     private String cpf;
+    @NotNull(message = "Campo Data Nascimento Obrigatório!")
+    private LocalDate dataNascimento;
     @NotBlank(message = "Campo Obrigatório!")
     private String cargoFuncionario;
+    @NotNull(message = "Campo salario Obrigatório!")
+    private BigDecimal salario;
+    @NotNull(message = "Campo Obrigatório!")
     @Column(unique = true, length = 11, updatable = false)
     private String cnh;
+    @NotNull(message = "Campo Obrigatório!")
     private LocalDate validadeCnh;
+    @NotNull(message = "Campo Obrigatório!")
     private LocalDate dataAdmissao;
     private LocalDate dataReadmissao;
     private LocalDate dataDemissao;
     @Enumerated(EnumType.STRING)
     private StatusFuncionario statusFuncionario = StatusFuncionario.ATIVO;
 
-    public Funcionario(FuncionarioResquest resquest) {
-        this.nomeCompleto = resquest.getNomeCompleto().toUpperCase();
-        this.cpf = resquest.getCpf();
-        this.cargoFuncionario = resquest.getCargoFuncionario().toUpperCase();
-        this.cnh = resquest.getCnh();
-        this.validadeCnh = resquest.getValidadeCnh();
-        this.dataAdmissao = resquest.getDataAdmissao();
+    public Funcionario(FuncionarioResquest request) {
+        this.nomeCompleto = request.getNomeCompleto().toUpperCase();
+        this.cpf = request.getCpf();
+        this.dataNascimento = request.getDataNascimento();
+        this.cargoFuncionario = request.getCargoFuncionario().toUpperCase();
+        this.salario = request.getSalario();
+        this.cnh = request.getCnh();
+        this.validadeCnh = request.getValidadeCnh();
+        this.dataAdmissao = request.getDataAdmissao();
     }
     public void altera(FuncionarioUpdateResquest updateRequest) {
         this.nomeCompleto = updateRequest.getNomeCompleto().toUpperCase();
