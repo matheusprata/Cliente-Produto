@@ -11,8 +11,8 @@
 	<groupId>br.com.bonfimvariedades</groupId>
 	<artifactId>Cliente-Produto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Cliente-Fiado</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Cliente-Produto</name>
+	<description>Criação de um sistema para conectar loja a orcamento e pedido dos clientes</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
