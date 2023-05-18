@@ -1,13 +1,12 @@
 package br.com.bonfimvariedades.clienteproduto.compra.domain;
 
-import br.com.bonfimvariedades.clienteproduto.compra.application.api.CompraRequest.CompraRequest;
+import br.com.bonfimvariedades.clienteproduto.compra.application.api.CompraRequest;
+import br.com.bonfimvariedades.clienteproduto.compra.application.api.CompraUpdateRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.domain.Fornecedor;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
-import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +14,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -27,31 +25,41 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCompra;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "compra")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "funcionario_id")
     @JsonIgnore
-    private List<Fornecedor> fornecedores;
+    private Funcionario funcionario;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "compra")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fornecedor_id")
     @JsonIgnore
-    private List<Funcionario> funcionarios;
+    private Fornecedor fornecedor;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "compra")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estoque_id")
     @JsonIgnore
-    private List<Estoque> estoques;
+    private Estoque estoque;
 
     @NotNull(message = "Campo Numero Pedido Obrigatório!")
     private String numeroPedido;
-    @NotBlank(message = "Campo Obrigatório!")
+    @NotNull(message = "Campo Obrigatório!")
     private LocalDate dataEmissaoPedido;
     private LocalDate previsaoEntrega;
     private BigDecimal valorTotalPedido;
 
     public Compra(Fornecedor fornecedor,Funcionario funcionario, Estoque estoque, CompraRequest request){
-        this.fornecedores = request.getIdFornecedor();
-        this.funcionarios = getFuncionarios();
-        this.estoques = getEstoques();
-        this.numeroPedido = getNumeroPedido();
-        this. =
-
+        this.fornecedor = fornecedor;
+        this.funcionario = funcionario;
+        this.estoque = estoque;
+        this.numeroPedido = request.getNumeroPedido();
+        this.dataEmissaoPedido = request.getDataEmissaoPedido();
+        this.previsaoEntrega = request.getPrevisaoEntrega();
+        this.valorTotalPedido = request.getValorTotalPedido();
+    }
+    public void altera(CompraUpdateRequest request){
+        this.numeroPedido = request.getNumeroPedido();
+        this.dataEmissaoPedido = request.getDataEmissaoPedido();
+        this.previsaoEntrega = request.getPrevisaoEntrega();
+        this.valorTotalPedido = request.getValorTotalPedido();
     }
 }
