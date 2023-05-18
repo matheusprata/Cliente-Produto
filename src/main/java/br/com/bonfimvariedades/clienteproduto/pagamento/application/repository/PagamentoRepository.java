@@ -2,7 +2,7 @@ package br.com.bonfimvariedades.clienteproduto.pagamento.application.repository;
 
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 
 import java.math.BigDecimal;

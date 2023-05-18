@@ -1,9 +1,11 @@
 package br.com.bonfimvariedades.clienteproduto.fornecedor.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
+import br.com.bonfimvariedades.clienteproduto.compra.domain.Compra;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorRequest;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorUpdateResquest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Categoria;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,6 +25,11 @@ public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFornecedor;
+
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fornecedor")
+    @JsonIgnore
+    private List<Compra> compras;
+
     private String nomeEmpresa;
     private String nomeCompleto;
     @NotBlank(message = "Campo Obrigatório!")

@@ -1,7 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.relatorios.application.api.response;
 
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import lombok.Value;
 
 import java.math.BigDecimal;

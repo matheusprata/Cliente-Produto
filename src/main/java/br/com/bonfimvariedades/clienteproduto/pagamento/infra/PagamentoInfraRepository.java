@@ -2,7 +2,7 @@ package br.com.bonfimvariedades.clienteproduto.pagamento.infra;
 
 import br.com.bonfimvariedades.clienteproduto.handler.APIException;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pagamento.application.repository.PagamentoRepository;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.Pagamento;
 import lombok.RequiredArgsConstructor;

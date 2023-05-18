@@ -4,7 +4,7 @@ import br.com.bonfimvariedades.clienteproduto.handler.APIException;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.SolicitacaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import org.springframework.http.HttpStatus;
 
