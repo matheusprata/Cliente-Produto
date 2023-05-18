@@ -1,8 +1,8 @@
 package br.com.bonfimvariedades.clienteproduto.estoque.domain;
 
+import br.com.bonfimvariedades.clienteproduto.compra.domain.Compra;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueRequest;
-import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,10 +10,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -28,6 +28,10 @@ public class Estoque {
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "estoque")
+    @JsonIgnore
+    private List<Compra> compras;
 
     @NotNull
     private String depositoProduto;
