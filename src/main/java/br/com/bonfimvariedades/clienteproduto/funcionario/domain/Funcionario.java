@@ -36,7 +36,7 @@ public class Funcionario {
     @JsonIgnore
     private List<Pedido> pedidos;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
     @JsonIgnore
     private List<Compra> compras;
 

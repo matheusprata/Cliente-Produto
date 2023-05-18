@@ -26,7 +26,7 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFornecedor;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fornecedor")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fornecedor")
     @JsonIgnore
     private List<Compra> compras;
 
