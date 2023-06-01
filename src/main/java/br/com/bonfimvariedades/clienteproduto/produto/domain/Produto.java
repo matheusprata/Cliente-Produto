@@ -23,9 +23,11 @@ import java.util.UUID;
 public class Produto{
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    @JsonIgnore
     private List<Estoque> Estoques;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    @JsonIgnore
     private List<Orcamento> orcamentos;
 
     @Id

@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoRequest;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,11 +42,17 @@ public class Pedido {
     @JsonIgnore
     private Produto produto;
 
+    @OneToOne
+    @JsonIgnore
+    private Estoque estoque;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
+    @NotNull
+    private BigDecimal quantidadeProdutoPedido;
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
     private BigDecimal valorEntrada;
@@ -66,6 +74,7 @@ public class Pedido {
         this.cliente = cliente;
         this.produto = produto;
         this.funcionario = funcionario;
+        this.quantidadeProdutoPedido = pedidoRequest.getQuantidadeProdutoPedido();
         this.tipoPagamento = pedidoRequest.getTipoPagamento();
         this.valorEntrada = pedidoRequest.getValorEntrada();
         this.desconto = pedidoRequest.getDesconto();
