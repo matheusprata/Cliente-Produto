@@ -1,7 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.annotation.constraints;
 
 import br.com.bonfimvariedades.clienteproduto.pedido.annotation.TipoPagamentoEntradaConstraint;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

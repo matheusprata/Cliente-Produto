@@ -2,6 +2,7 @@ package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoRequest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;

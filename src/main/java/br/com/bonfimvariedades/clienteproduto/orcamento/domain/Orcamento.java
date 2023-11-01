@@ -3,7 +3,7 @@ package br.com.bonfimvariedades.clienteproduto.orcamento.domain;
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pedido.annotation.constraints.Valid;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;

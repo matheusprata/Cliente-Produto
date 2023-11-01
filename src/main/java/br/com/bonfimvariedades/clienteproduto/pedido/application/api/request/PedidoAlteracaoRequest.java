@@ -1,6 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.application.api.request;
 
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.TipoPagamento;
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Value;

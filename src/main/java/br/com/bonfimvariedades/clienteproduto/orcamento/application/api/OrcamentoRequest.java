@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.br.CPF;
-import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
