@@ -48,4 +48,18 @@ public class RestResponseEntityExceptionHandler {
 		ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), mensagem);
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 	}
+
+	@ExceptionHandler(ProdutoNaoDisponivelException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity<ErrorResponse> handleProdutoNaoDisponivelException(ProdutoNaoDisponivelException ex) {
+		ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+
+	@ExceptionHandler(QuantidadeInsuficienteException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ResponseEntity<ErrorResponse> handleQuantidadeInsuficienteException(QuantidadeInsuficienteException ex) {
+		ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
 }
