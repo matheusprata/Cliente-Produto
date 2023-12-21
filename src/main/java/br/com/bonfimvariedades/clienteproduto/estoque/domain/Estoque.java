@@ -53,4 +53,8 @@ public class Estoque {
         this.depositoProduto = estoqueAlteracaoRequest.getDepositoProduto();
         this.quantidadeProduto = estoqueAlteracaoRequest.getQuantidadeProduto();
     }
+
+    public void setQuantidadeProduto(BigDecimal quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
+    }
 }
