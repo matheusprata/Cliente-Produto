@@ -51,7 +51,13 @@ public class Produto{
         this.valorProduto = alteracaoRequest.getValorProduto();
     }
 
-    public void alteraStatus() {
+    public void produtoEsgotado() {
         this.status = Status.ESGOTADO;
+    }
+    public void produtoDisponivel() {
+        this.status = Status.DISPONIVEL;
+    }
+    public void produtoAguardandoChegar() {
+        this.status = Status.AGUARDANDO_CHEGAR;
     }
 }
