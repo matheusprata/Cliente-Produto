@@ -61,6 +61,14 @@ public class PedidoApplicationService implements PedidoService {
             log.warn("Não contem essa quantidade de {} no estoque. Quantidade disponível: {}", produto.getNomeProduto(), quantidadeDisponivel);
             throw new QuantidadeInsuficienteException("A quantidade em estoque não é suficiente para atender ao pedido.");
         }
+        // Verificar se a quantidade solicitada é maior que a disponível
+        if (pedidoRequest.getQuantidadeProdutoPedido().compareTo(quantidadeDisponivel) > 0) {
+            log.warn("A quantidade solicitada é maior que a quantidade disponível em estoque. Quantidade disponível: {}", quantidadeDisponivel);
+            throw new QuantidadeInsuficienteException("A quantidade em estoque não é suficiente para atender ao pedido.");
+        }
+        // Calcular o total do pedido
+        BigDecimal valorUnitario = produto.getValorProduto();
+        BigDecimal totalPedido = valorUnitario.multiply(pedidoRequest.getQuantidadeProdutoPedido());
         // Salva o pedido
         Pedido pedido = pedidoRepository.savePedido(new Pedido(cliente, produto, funcionario, pedidoRequest));
         // Atualizar o estoque
