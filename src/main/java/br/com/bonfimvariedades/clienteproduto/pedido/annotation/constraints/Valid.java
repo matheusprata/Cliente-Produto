@@ -14,12 +14,12 @@ import java.math.RoundingMode;
 public class Valid {
     public static void validaSolicitacao(SolicitacaoRequest request, Produto produto) {
         validarTipoPagamentoETotalParcelas(request.getTipoPagamento(), request.getQuantidadeParcelas());
-        validaEntrada(request.getValorEntrada(), produto.getValorProduto(), request.getDesconto());
+        validaEntrada(request.getValorEntrada(), produto.getValorProduto(), request.getDesconto(), request.getQuantidadeProdutoPedido());
     }
 
     public static void validaAlteracaoPedido(Pedido pedido, PedidoAlteracaoRequest request) {
         validarTipoPagamentoETotalParcelas(request.getTipoPagamento(), request.getQuantidadeParcelas());
-        validaEntrada(request.getValorEntrada(), pedido.getProduto().getValorProduto(), request.getDesconto());
+        validaEntrada(request.getValorEntrada(), pedido.getProduto().getValorProduto(), request.getDesconto(), pedido.getQuantidadeProdutoPedido());
     }
 
     public static void validarTipoPagamentoETotalParcelas(TipoPagamento tipoPagamento, int quantidadeParcelas) {
@@ -37,8 +37,8 @@ public class Valid {
         }
     }
 
-    public  static void validaEntrada(BigDecimal valorEntrada, BigDecimal valorProduto, int desconto){
-        BigDecimal valorFinal = calcularValorFinal(desconto, valorProduto);
+    public  static void validaEntrada(BigDecimal valorEntrada, BigDecimal valorProduto, int desconto, BigDecimal quantidadeProdutoPedido){
+        BigDecimal valorFinal = calcularValorFinal(desconto, valorProduto, quantidadeProdutoPedido);
         if(valorEntrada.compareTo(valorProduto) > 0){
             throw APIException
                     .build(HttpStatus.BAD_REQUEST,"Valor entrada R$: "+valorEntrada + " maior que o valor contratado, " +
@@ -46,7 +46,7 @@ public class Valid {
         }
     }
 
-    public static BigDecimal calcularValorFinal(int desconto, BigDecimal valorProduto) {
+    public static BigDecimal calcularValorFinal(int desconto, BigDecimal valorProduto, BigDecimal quantidadeProdutoPedido) {
         final int DESCONTO_MAXIMO = 100;
         final int DESCONTO_MINIMO = 0;
 
@@ -58,6 +58,7 @@ public class Valid {
         }
         BigDecimal valorDescontado = valorProduto.multiply(new BigDecimal(desconto)).divide(BigDecimal.valueOf(100),
                 2, RoundingMode.HALF_UP);
-        return valorProduto.subtract(valorDescontado);
+        valorProduto.subtract(valorDescontado);
+        return valorProduto.multiply(quantidadeProdutoPedido);
     }
 }

@@ -80,7 +80,7 @@ public class Pedido {
         this.desconto = pedidoRequest.getDesconto();
         this.quantidadeParcelas = pedidoRequest.getQuantidadeParcelas();
         this.observacao = pedidoRequest.getObservacao().toUpperCase();
-        this.valorFinal = calcularValorFinal(pedidoRequest.getDesconto(), produto.getValorProduto());
+        this.valorFinal = calcularValorFinal(pedidoRequest.getDesconto(), produto.getValorProduto(), pedidoRequest.getQuantidadeProdutoPedido());
     }
 
     public Pedido(Orcamento orcamento) {
