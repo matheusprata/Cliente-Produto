@@ -12,6 +12,7 @@ import java.util.UUID;
 public class OrcamentoResponse {
     Long idOrcamento;
     UUID idFuncionario;
+    BigDecimal quantidadeProdutoPedido;
     String nomeFuncionario;
     String cpf;
     String nomeCompleto;
@@ -35,6 +36,7 @@ public class OrcamentoResponse {
         this.valorEntrada = orcamento.getValorEntrada();
         this.desconto = orcamento.getDesconto();
         this.quantidadeParcelas = orcamento.getQuantidadeParcelas();
+        this.quantidadeProdutoPedido = orcamento.getQuantidadeProdutoPedido();
         this.observacao = orcamento.getObservacao();
         this.validade = orcamento.getValidade();
         this.valorFinal = orcamento.getValorFinal();

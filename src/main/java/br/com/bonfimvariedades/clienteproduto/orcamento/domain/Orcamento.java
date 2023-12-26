@@ -45,6 +45,7 @@ public class Orcamento {
     protected LocalDate dataOrcamento = LocalDate.now();
     private BigDecimal valorEntrada;
     private int desconto;
+    private BigDecimal quantidadeProdutoPedido;
     @Min(value = 1, message = "O valor mínimo é 1")
     @Max(value = 12, message = "O valor máximo é 12")
     private int quantidadeParcelas;
@@ -59,6 +60,7 @@ public class Orcamento {
         this.tipoPagamento = orcamentoRequest.getTipoPagamento();
         this.valorEntrada = orcamentoRequest.getValorEntrada();
         this.desconto = orcamentoRequest.getDesconto();
+        this.quantidadeProdutoPedido = orcamentoRequest.getQuantidadeProdutoPedido();
         this.quantidadeParcelas = orcamentoRequest.getQuantidadeParcelas();
         this.observacao = orcamentoRequest.getObservacao();
         this.valorFinal = Valid.calcularValorFinal(orcamentoRequest.getDesconto(), produto.getValorProduto(), orcamentoRequest.getQuantidadeProdutoPedido());
