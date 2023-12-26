@@ -51,7 +51,6 @@ public class Pedido {
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @NotNull
     private BigDecimal quantidadeProdutoPedido;
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
@@ -87,12 +86,13 @@ public class Pedido {
         this.cliente = orcamento.getCliente();
         this.produto = orcamento.getProduto();
         this.funcionario = orcamento.getFuncionario();
+        this.quantidadeProdutoPedido = orcamento.getQuantidadeProdutoPedido();
         this.tipoPagamento = orcamento.getTipoPagamento();
         this.valorEntrada = orcamento.getValorEntrada();
         this.desconto = orcamento.getDesconto();
         this.quantidadeParcelas = orcamento.getQuantidadeParcelas();
         this.observacao = orcamento.getObservacao().toUpperCase();
-        this.valorFinal = orcamento.getValorFinal();
+        this.valorFinal = calcularValorFinal(orcamento.getDesconto(), produto.getValorProduto(), orcamento.getQuantidadeProdutoPedido());
     }
 
     public void altera(PedidoAlteracaoRequest pedidoAlteracaoRequest) {
