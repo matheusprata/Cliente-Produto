@@ -60,7 +60,7 @@ public class ProdutoApplicationService implements ProdutoService {
     public void updateProdutoStatus(UUID idProduto) {
         log.info("[inicia] produtoApplicationService - updateprodutoStatus");
         Produto produto = produtoRepository.getOneProduto(idProduto);
-        produto.alteraStatus();
+        produto.produtoEsgotado();
         produtoRepository.salvaProduto(produto);
         log.info("[finaliza] produtoApplicationService - updateprodutoStatus");
     }

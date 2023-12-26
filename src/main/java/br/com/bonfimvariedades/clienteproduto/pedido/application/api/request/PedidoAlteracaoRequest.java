@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class PedidoAlteracaoRequest {
     TipoPagamento tipoPagamento;
     BigDecimal valorEntrada;
+    BigDecimal quantidadeProdutoPedido;
     int desconto;
     @Min(value = 1, message = "O valor mínimo é 1")
     @Max(value = 12, message = "O valor máximo é 12")

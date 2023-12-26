@@ -23,9 +23,11 @@ import java.util.UUID;
 public class Produto{
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    @JsonIgnore
     private List<Estoque> Estoques;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
+    @JsonIgnore
     private List<Orcamento> orcamentos;
 
     @Id
@@ -49,7 +51,13 @@ public class Produto{
         this.valorProduto = alteracaoRequest.getValorProduto();
     }
 
-    public void alteraStatus() {
+    public void produtoEsgotado() {
         this.status = Status.ESGOTADO;
+    }
+    public void produtoDisponivel() {
+        this.status = Status.DISPONIVEL;
+    }
+    public void produtoAguardandoChegar() {
+        this.status = Status.AGUARDANDO_CHEGAR;
     }
 }

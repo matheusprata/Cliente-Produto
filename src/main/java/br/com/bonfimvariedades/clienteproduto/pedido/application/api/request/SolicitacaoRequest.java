@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -19,6 +18,9 @@ public class SolicitacaoRequest {
     UUID idFuncionario;
     @NotNull(message = "Necessario o id do produto")
     UUID idProduto;
+    @NotNull
+    @DecimalMin(message = "A quantidade não pode ser negativo", value = "0.0")
+    BigDecimal quantidadeProdutoPedido;
     @NotNull(message = "O tipo de pagamento não pode ser nulo")
     TipoPagamento tipoPagamento;
     @DecimalMin(message = "O valor de entrada não pode ser negativo", value = "0.0")

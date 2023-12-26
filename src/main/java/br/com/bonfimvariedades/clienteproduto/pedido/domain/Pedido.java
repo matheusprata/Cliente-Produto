@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.pedido.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.Cliente;
+import br.com.bonfimvariedades.clienteproduto.estoque.domain.Estoque;
 import br.com.bonfimvariedades.clienteproduto.funcionario.domain.Funcionario;
 import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import br.com.bonfimvariedades.clienteproduto.pedido.application.api.request.PedidoAlteracaoRequest;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,11 +43,16 @@ public class Pedido {
     @JsonIgnore
     private Produto produto;
 
+    @OneToOne
+    @JsonIgnore
+    private Estoque estoque;
+
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
+    private BigDecimal quantidadeProdutoPedido;
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
     private BigDecimal valorEntrada;
@@ -67,24 +74,26 @@ public class Pedido {
         this.cliente = cliente;
         this.produto = produto;
         this.funcionario = funcionario;
+        this.quantidadeProdutoPedido = pedidoRequest.getQuantidadeProdutoPedido();
         this.tipoPagamento = pedidoRequest.getTipoPagamento();
         this.valorEntrada = pedidoRequest.getValorEntrada();
         this.desconto = pedidoRequest.getDesconto();
         this.quantidadeParcelas = pedidoRequest.getQuantidadeParcelas();
         this.observacao = pedidoRequest.getObservacao().toUpperCase();
-        this.valorFinal = calcularValorFinal(pedidoRequest.getDesconto(), produto.getValorProduto());
+        this.valorFinal = calcularValorFinal(pedidoRequest.getDesconto(), produto.getValorProduto(), pedidoRequest.getQuantidadeProdutoPedido());
     }
 
     public Pedido(Orcamento orcamento) {
         this.cliente = orcamento.getCliente();
         this.produto = orcamento.getProduto();
         this.funcionario = orcamento.getFuncionario();
+        this.quantidadeProdutoPedido = orcamento.getQuantidadeProdutoPedido();
         this.tipoPagamento = orcamento.getTipoPagamento();
         this.valorEntrada = orcamento.getValorEntrada();
         this.desconto = orcamento.getDesconto();
         this.quantidadeParcelas = orcamento.getQuantidadeParcelas();
         this.observacao = orcamento.getObservacao().toUpperCase();
-        this.valorFinal = orcamento.getValorFinal();
+        this.valorFinal = calcularValorFinal(orcamento.getDesconto(), produto.getValorProduto(), orcamento.getQuantidadeProdutoPedido());
     }
 
     public void altera(PedidoAlteracaoRequest pedidoAlteracaoRequest) {
