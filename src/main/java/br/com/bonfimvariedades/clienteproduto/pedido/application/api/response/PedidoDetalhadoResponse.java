@@ -13,6 +13,7 @@ import java.util.UUID;
 public class PedidoDetalhadoResponse {
     UUID idPedido;
     UUID idFuncionario;
+    BigDecimal quantidadeProdutoPedido;
     String nomeFuncionario;
     String cpf;
     TipoPagamento tipoPagamento;
@@ -34,6 +35,7 @@ public class PedidoDetalhadoResponse {
         this.nomeCompleto = pedido.getCliente().getNomeCompleto();
         this.dataPedido = pedido.getDataPedido();
         this.valorProduto = pedido.getProduto().getValorProduto();
+        this.quantidadeProdutoPedido = pedido.getQuantidadeProdutoPedido();
         this.valorEntrada = pedido.getValorEntrada();
         this.tipoPagamento = pedido.getTipoPagamento();
         this.quantidadeParcelas = pedido.getQuantidadeParcelas();

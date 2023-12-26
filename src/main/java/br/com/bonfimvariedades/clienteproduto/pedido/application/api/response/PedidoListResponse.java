@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class PedidoListResponse {
     UUID idPedido;
     UUID idFuncionario;
+    BigDecimal quantidadeProdutoPedido;
     String nomeFuncionario;
     String cpf;
     TipoPagamento tipoPagamento;
@@ -42,6 +43,7 @@ public class PedidoListResponse {
         this.desconto = pedido.getDesconto();
         this.quantidadeParcelas = pedido.getQuantidadeParcelas();
         this.valorFinal = pedido.getValorFinal();
+        this.quantidadeProdutoPedido = pedido.getQuantidadeProdutoPedido();
         this.dataPedido = pedido.getDataPedido();
         this.nomeCompleto = pedido.getCliente().getNomeCompleto();
         this.observacao = pedido.getObservacao();
