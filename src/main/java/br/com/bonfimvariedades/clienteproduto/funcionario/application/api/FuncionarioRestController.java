@@ -14,9 +14,9 @@ public class FuncionarioRestController implements FuncionarioApi {
     private final FuncionarioService funcionarioService;
 
     @Override
-    public FuncionarioIdResponse saveFuncionario(FuncionarioResquest resquest) {
+    public FuncionarioIdResponse saveFuncionario(FuncionarioResquest request) {
         log.info("[inicia] FuncionarioRestController -  saveFuncionario");
-        FuncionarioIdResponse idResponse = funcionarioService.saveFuncionario(resquest);
+        FuncionarioIdResponse idResponse = funcionarioService.saveFuncionario(request);
         log.info("[finaliza] FuncionarioRestController -  saveFuncionario");
         return idResponse;
     }
