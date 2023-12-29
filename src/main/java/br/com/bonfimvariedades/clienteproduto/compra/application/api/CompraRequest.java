@@ -1,5 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.compra.application.api;
 
+import br.com.bonfimvariedades.clienteproduto.pagamento.domain.TipoPagamento;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 import java.math.BigDecimal;
@@ -15,10 +16,14 @@ public class CompraRequest{
     @NotNull(message = "Campo Id Estoque Obrigatório!")
     UUID idEstoque;
     @NotNull(message = "Campo Numero Pedido Obrigatório!")
-    private String numeroPedido;
-    @NotNull(message = "Campo Obrigatório!")
-    private LocalDate dataEmissaoPedido;
-    private LocalDate previsaoEntrega;
-    private String formaPagamento;
-    private BigDecimal valorTotalPedido;
+    String numeroPedido;
+    @NotNull(message = "Campo data emissão pedido Obrigatório!")
+    LocalDate dataEmissaoPedido;
+    @NotNull(message = "Campo quantidade compra estoque Obrigatório!")
+    BigDecimal quantidadeCompraEstoque;
+    LocalDate previsaoEntrega;
+    @NotNull(message = "Campo tipo pagamento Obrigatório!")
+    TipoPagamento tipoPagamento;
+    @NotNull(message = "Campo Numero Pedido Obrigatório!")
+    BigDecimal valorTotalPedido;
 }
