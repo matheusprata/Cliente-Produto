@@ -1,4 +1,4 @@
-package br.com.bonfimvariedades.ClienteFiado;
+package br.com.bonfimvariedades.ClienteProduto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
