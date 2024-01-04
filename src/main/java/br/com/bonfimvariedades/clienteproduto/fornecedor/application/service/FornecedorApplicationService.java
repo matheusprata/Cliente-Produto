@@ -27,11 +27,11 @@ public class FornecedorApplicationService implements FornecedorService {
     }
 
     @Override
-    public FornecedorResponse getFornecedor(UUID idFornecedor) {
+    public Fornecedor getFornecedor(UUID idFornecedor) {
         log.info("[inicia] FornecedorApplicationService - getFornecedor");
         Fornecedor fornecedor = fornecedorRepository.getFornecedor(idFornecedor);
         log.info("[finaliza] FornecedorApplicationService - getFornecedor");
-        return new FornecedorResponse(fornecedor);
+        return fornecedor;
     }
 
     @Override
