@@ -1,7 +1,6 @@
 package br.com.bonfimvariedades.clienteproduto.funcionario.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
-import br.com.bonfimvariedades.clienteproduto.compra.domain.Compra;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioResquest;
 import br.com.bonfimvariedades.clienteproduto.funcionario.application.api.FuncionarioUpdateResquest;
 import br.com.bonfimvariedades.clienteproduto.orcamento.domain.Orcamento;
@@ -35,10 +34,6 @@ public class Funcionario {
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
     @JsonIgnore
     private List<Pedido> pedidos;
-
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
-    @JsonIgnore
-    private List<Compra> compras;
 
     @NotBlank(message = "Campo Nome Obrigatório!")
     private String nomeCompleto;
