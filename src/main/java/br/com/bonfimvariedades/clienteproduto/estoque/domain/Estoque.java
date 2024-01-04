@@ -6,7 +6,6 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,11 +33,8 @@ public class Estoque {
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
   
-    @NotNull
     private String depositoProduto;
-    @NotNull
     private BigDecimal quantidadeProduto;
-    @NotNull
     private LocalDate dataEntrada;
 
     public Estoque(Produto produto, EstoqueRequest request){
@@ -49,9 +45,15 @@ public class Estoque {
     }
 
     public void altera(EstoqueAlteracaoRequest estoqueAlteracaoRequest) {
-        this.produto = produto;
-        this.depositoProduto = estoqueAlteracaoRequest.getDepositoProduto();
-        this.quantidadeProduto = estoqueAlteracaoRequest.getQuantidadeProduto();
+        if(estoqueAlteracaoRequest.getDepositoProduto() != null) {
+            this.depositoProduto = estoqueAlteracaoRequest.getDepositoProduto();
+        }
+        if(estoqueAlteracaoRequest.getQuantidadeProduto() != null) {
+            this.quantidadeProduto = estoqueAlteracaoRequest.getQuantidadeProduto();
+        }
+        if(estoqueAlteracaoRequest.getDataEntrada() != null) {
+            this.dataEntrada = estoqueAlteracaoRequest.getDataEntrada();
+        }
     }
 
     public void setQuantidadeProduto(BigDecimal quantidadeProduto) {

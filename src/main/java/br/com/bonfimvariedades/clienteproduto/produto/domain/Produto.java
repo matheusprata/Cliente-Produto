@@ -9,7 +9,6 @@ import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoReq
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,7 +49,7 @@ public class Produto{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProduto;
-    @NotBlank
+
     private String nomeProduto;
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
@@ -66,7 +65,15 @@ public class Produto{
     }
 
     public void altera(ProdutoUpdateRequest alteracaoRequest) {
-        this.valorProduto = alteracaoRequest.getValorProduto();
+        if(alteracaoRequest.getNomeProduto() != null) {
+            this.nomeProduto = alteracaoRequest.getNomeProduto();
+        }
+        if(alteracaoRequest.getCategoria() != null) {
+            this.categoria = alteracaoRequest.getCategoria();
+        }
+        if(alteracaoRequest.getValorProduto() != null) {
+           this.valorProduto = alteracaoRequest.getValorProduto();
+        }
     }
 
     public void produtoEsgotado() {
@@ -74,8 +81,5 @@ public class Produto{
     }
     public void produtoDisponivel() {
         this.status = Status.DISPONIVEL;
-    }
-    public void produtoAguardandoChegar() {
-        this.status = Status.AGUARDANDO_CHEGAR;
     }
 }

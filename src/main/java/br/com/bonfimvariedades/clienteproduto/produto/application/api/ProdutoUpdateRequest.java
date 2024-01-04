@@ -1,15 +1,15 @@
 package br.com.bonfimvariedades.clienteproduto.produto.application.api;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import br.com.bonfimvariedades.clienteproduto.produto.domain.Categoria;
+import jakarta.validation.constraints.DecimalMin;
+import lombok.Value;
 
 import java.math.BigDecimal;
 
-@Data
+@Value
 public class ProdutoUpdateRequest {
-    @NotBlank
     String nomeProduto;
-    String categoria;
+    Categoria categoria;
+    @DecimalMin(message = "A quantidade não pode ser negativo", value = "0.0")
     BigDecimal valorProduto;
 }
