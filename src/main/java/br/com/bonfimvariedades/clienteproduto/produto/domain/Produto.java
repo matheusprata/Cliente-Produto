@@ -7,6 +7,7 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.pedido.domain.Status;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
+import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateStatusRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -79,7 +80,8 @@ public class Produto{
     public void produtoEsgotado() {
         this.status = Status.ESGOTADO;
     }
-    public void produtoDisponivel() {
-        this.status = Status.DISPONIVEL;
+
+    public void alteraStatus(ProdutoUpdateStatusRequest produtoUpdateStatusRequest) {
+        this.status = produtoUpdateStatusRequest.getStatus();
     }
 }

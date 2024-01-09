@@ -5,6 +5,7 @@ import br.com.bonfimvariedades.clienteproduto.fornecedor.domain.Fornecedor;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoIdResponse;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
+import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateStatusRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.repository.ProdutoRepository;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import lombok.RequiredArgsConstructor;
@@ -63,10 +64,10 @@ public class ProdutoApplicationService implements ProdutoService {
         log.info("[finaliza] produtoApplicationService - updateproduto");
     }
 
-    public void updateProdutoStatus(UUID idProduto) {
+    public void updateProdutoStatus(UUID idProduto, ProdutoUpdateStatusRequest produtoUpdateStatusRequest) {
         log.info("[inicia] produtoApplicationService - updateprodutoStatus");
         Produto produto = produtoRepository.getOneProduto(idProduto);
-        produto.produtoEsgotado();
+        produto.alteraStatus(produtoUpdateStatusRequest);
         produtoRepository.salvaProduto(produto);
         log.info("[finaliza] produtoApplicationService - updateprodutoStatus");
     }

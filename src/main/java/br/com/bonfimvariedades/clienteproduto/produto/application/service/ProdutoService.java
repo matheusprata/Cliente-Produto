@@ -4,6 +4,7 @@ package br.com.bonfimvariedades.clienteproduto.produto.application.service;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoIdResponse;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateRequest;
+import br.com.bonfimvariedades.clienteproduto.produto.application.api.ProdutoUpdateStatusRequest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface ProdutoService {
     List<Produto> getAllProdutos();
     void deleteProduto(UUID idProduto);
     void updateProduto(UUID idProduto, ProdutoUpdateRequest updateRequest);
-    void updateProdutoStatus(UUID idProduto);
+    void updateProdutoStatus(UUID idProduto, ProdutoUpdateStatusRequest produtoUpdateStatusRequest);
 }

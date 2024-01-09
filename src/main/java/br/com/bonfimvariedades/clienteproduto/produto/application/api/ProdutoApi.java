@@ -34,5 +34,5 @@ public interface ProdutoApi {
 
     @PatchMapping("/update/status/{idProduto}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void updateProdutoStatus(@PathVariable UUID idProduto);
+    void updateProdutoStatus(@PathVariable UUID idProduto, @Valid @RequestBody ProdutoUpdateStatusRequest produtoUpdateStatusRequest);
 }

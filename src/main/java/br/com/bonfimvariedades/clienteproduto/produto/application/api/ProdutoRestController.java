@@ -54,9 +54,11 @@ public class ProdutoRestController implements ProdutoApi {
     }
 
     @Override
-    public void updateProdutoStatus(UUID idProduto) {
+    public void updateProdutoStatus(UUID idProduto, ProdutoUpdateStatusRequest produtoUpdateStatusRequest) {
         log.info("[inicia] produtoRestController - updateProdutoStatus");
-        produtoService.updateProdutoStatus(idProduto);
+        produtoService.updateProdutoStatus(idProduto, produtoUpdateStatusRequest);
         log.info("[finaliza] produtoRestController - updateProdutoStatus");
     }
+
+
 }
