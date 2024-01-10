@@ -4,12 +4,14 @@ import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.Fornece
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorResponse;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorRequest;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorUpdateResquest;
+import br.com.bonfimvariedades.clienteproduto.fornecedor.domain.Fornecedor;
+
 import java.util.List;
 import java.util.UUID;
 
 public interface FornecedorService {
     FornecedorIdResponse saveFornecedor(FornecedorRequest resquest);
-    FornecedorResponse getFornecedor(UUID idFornecedor);
+    Fornecedor getFornecedor(UUID idFornecedor);
     void update(UUID idFornecedor, FornecedorUpdateResquest updateRequest);
     List<FornecedorResponse> getAllFornecedors();
     void inativaFornecedor(UUID idFornecedor);

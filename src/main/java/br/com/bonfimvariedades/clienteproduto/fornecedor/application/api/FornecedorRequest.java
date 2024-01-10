@@ -12,17 +12,17 @@ import org.hibernate.validator.constraints.br.CPF;
 @Value
 public class FornecedorRequest {
     @NotNull(message = "Campo Obrigatório!")
-    private String nomeEmpresa;
+    String nomeEmpresa;
     @NotNull(message = "Campo Obrigatório!")
     String nomeCompleto;
     @NotBlank(message = "Campo Obrigatório!")
     @CPF(groups = PessoaFisica.class, message = "CPF inválido!")
     @Pattern(regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)")
     String cpf;
-    @NotNull(message = "Campo Obrigatório!")
-    private String email;
-    @NotNull(message = "Campo Obrigatório!")
-    private String telefone;
-    private Categoria categoria;
-    private StatusFornecedor statusFornecedor;
+    @NotNull(message = "Campo email Obrigatório!")
+    String email;
+    @NotNull(message = "Campo telefone Obrigatório!")
+    String telefone;
+    @NotNull(message = "Campo Categoria Obrigatório!")
+    Categoria categoria;
 }

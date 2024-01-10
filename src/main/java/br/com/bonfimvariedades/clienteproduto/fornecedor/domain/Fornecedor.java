@@ -1,10 +1,10 @@
 package br.com.bonfimvariedades.clienteproduto.fornecedor.domain;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.domain.groups.PessoaFisica;
-import br.com.bonfimvariedades.clienteproduto.compra.domain.Compra;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorRequest;
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.api.FornecedorUpdateResquest;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Categoria;
+import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,9 +27,9 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFornecedor;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fornecedor")
+    @ManyToMany(mappedBy = "fornecedores")
     @JsonIgnore
-    private List<Compra> compras;
+    private List<Produto> produtos = new ArrayList<>();
 
     private String nomeEmpresa;
     private String nomeCompleto;

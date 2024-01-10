@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,22 +34,23 @@ public class Pedido {
     private UUID idPedido;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
     @JsonIgnore
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @OneToOne
     @JsonIgnore
+    @JoinColumn(name = "produto_id")
     private Produto produto;
-
-    @OneToOne
-    @JsonIgnore
-    private Estoque estoque;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
+    @JsonIgnore
+    private List<Pagamento> pagamentos;
 
     private BigDecimal quantidadeProdutoPedido;
     @Enumerated(EnumType.STRING)
@@ -65,10 +65,6 @@ public class Pedido {
     private String observacao;
     @Enumerated(EnumType.STRING)
     private Status status = Status.DISPONIVEL;
-
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
-    @JsonIgnore
-    private List<Pagamento> pagamentos;
 
     public Pedido(Cliente cliente, Produto produto, Funcionario funcionario, PedidoRequest pedidoRequest) {
         this.cliente = cliente;

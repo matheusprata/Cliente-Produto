@@ -19,15 +19,16 @@ public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idPagamento;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+
     private LocalDate dataPagamento = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private TipoPagamento tipoPagamento;
     private BigDecimal valorPago;
-
-    @ManyToOne
-    @JoinColumn(name = "pedido_id")
-    @JsonIgnore
-    private Pedido pedido;
 
     public Pagamento(PagamentoRequest pagamentoRequest, Pedido pedido) {
         this.tipoPagamento = pagamentoRequest.getTipoPagamento();

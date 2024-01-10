@@ -1,6 +1,7 @@
 package br.com.bonfimvariedades.clienteproduto.fornecedor.application.api;
 
 import br.com.bonfimvariedades.clienteproduto.fornecedor.application.service.FornecedorService;
+import br.com.bonfimvariedades.clienteproduto.fornecedor.domain.Fornecedor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +25,9 @@ public class FornecedorRestController implements FornecedorApi {
     @Override
     public FornecedorResponse getFornecedor(UUID idFornecedor) {
         log.info("[inicia] FornecedorRestController -  getFornecedor");
-        FornecedorResponse response = fornecedorService.getFornecedor(idFornecedor);
+        Fornecedor response = fornecedorService.getFornecedor(idFornecedor);
         log.info("[finaliza] FornecedorRestController -  getFornecedor");
-        return response;
+        return new FornecedorResponse(response);
     }
 
     @Override
