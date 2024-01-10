@@ -8,8 +8,6 @@ import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.orcamento.application.api.OrcamentoRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 
 import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.cliente.application.api.ClienteRequest;
@@ -34,12 +32,14 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID idCliente;
+
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
+	@JsonIgnore
+	List<Pedido> pedidos;
+
 	@Enumerated(EnumType.STRING)
 	private TipoPessoa tipoPessoa = TipoPessoa.FISICA;
-	@NotNull(message = "Campo Nome Obrigatório!")
 	private String nomeCompleto;
-	@Email
-	@Column(unique = true)
 	private String email;
 	private String celular;
 	private String telefone;
@@ -56,10 +56,6 @@ public class Cliente {
 	private LocalDate dataDoPedido;
 	private LocalDate dataUltimaAlteracao;
 	private LocalDate dataCadastro;
-
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
-	@JsonIgnore
-	List<Pedido> pedidos;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();

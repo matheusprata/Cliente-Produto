@@ -24,6 +24,9 @@ import java.util.UUID;
 @Getter
 @Entity
 public class Produto{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idProduto;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
     @JsonIgnore
@@ -35,7 +38,6 @@ public class Produto{
 
     @OneToOne
     @JsonIgnore
-    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
     
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -46,10 +48,6 @@ public class Produto{
     )
     @JsonIgnore
     private List<Fornecedor> fornecedores = new ArrayList<>();
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idProduto;
 
     private String nomeProduto;
     @Enumerated(EnumType.STRING)

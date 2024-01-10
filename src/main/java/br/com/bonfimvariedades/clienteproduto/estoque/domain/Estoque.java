@@ -2,7 +2,6 @@ package br.com.bonfimvariedades.clienteproduto.estoque.domain;
 
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueAlteracaoRequest;
 import br.com.bonfimvariedades.clienteproduto.estoque.application.api.EstoqueRequest;
-import br.com.bonfimvariedades.clienteproduto.pedido.domain.Pedido;
 import br.com.bonfimvariedades.clienteproduto.produto.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -28,11 +27,6 @@ public class Estoque {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @OneToOne
-    @JsonIgnore
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
-  
     private String depositoProduto;
     private BigDecimal quantidadeProduto;
     private LocalDate dataEntrada;
