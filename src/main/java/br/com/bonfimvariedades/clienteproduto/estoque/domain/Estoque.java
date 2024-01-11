@@ -21,15 +21,14 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idEstoque;
+    private String depositoProduto;
+    private BigDecimal quantidadeProduto;
+    private LocalDate dataEntrada;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "produto_id")
     private Produto produto;
-
-    private String depositoProduto;
-    private BigDecimal quantidadeProduto;
-    private LocalDate dataEntrada;
 
     public Estoque(Produto produto, EstoqueRequest request){
         this.produto = produto;

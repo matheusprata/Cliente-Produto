@@ -27,6 +27,12 @@ public class Produto{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProduto;
+    private String nomeProduto;
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+    private BigDecimal valorProduto;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.DISPONIVEL;
 
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "produto")
     @JsonIgnore
@@ -39,7 +45,7 @@ public class Produto{
     @OneToOne
     @JsonIgnore
     private Pedido pedido;
-    
+
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "produto_fornecedor",
@@ -48,13 +54,6 @@ public class Produto{
     )
     @JsonIgnore
     private List<Fornecedor> fornecedores = new ArrayList<>();
-
-    private String nomeProduto;
-    @Enumerated(EnumType.STRING)
-    private Categoria categoria;
-    private BigDecimal valorProduto;
-    @Enumerated(EnumType.STRING)
-    private Status status = Status.DISPONIVEL;
 
     public Produto(ProdutoRequest request, List<Fornecedor> fornecedores) {
         this.nomeProduto = request.getNomeProduto();

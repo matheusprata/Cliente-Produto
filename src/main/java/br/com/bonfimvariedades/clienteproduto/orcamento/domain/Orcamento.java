@@ -23,6 +23,16 @@ public class Orcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idOrcamento;
+    @Enumerated(EnumType.STRING)
+    private TipoPagamento tipoPagamento;
+    private LocalDate dataOrcamento = LocalDate.now();
+    private BigDecimal valorEntrada;
+    private int desconto;
+    private BigDecimal quantidadeProdutoPedido;
+    private int quantidadeParcelas;
+    private String observacao;
+    private LocalDate validade = dataOrcamento.plusDays(5);
+    private BigDecimal valorFinal;
 
     @OneToOne
     @JsonIgnore
@@ -38,17 +48,6 @@ public class Orcamento {
     @JsonIgnore
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
-
-    @Enumerated(EnumType.STRING)
-    private TipoPagamento tipoPagamento;
-    private LocalDate dataOrcamento = LocalDate.now();
-    private BigDecimal valorEntrada;
-    private int desconto;
-    private BigDecimal quantidadeProdutoPedido;
-    private int quantidadeParcelas;
-    private String observacao;
-    private LocalDate validade = dataOrcamento.plusDays(5);
-    private BigDecimal valorFinal;
 
     public Orcamento(Cliente cliente, Produto produto, Funcionario funcionario, OrcamentoRequest orcamentoRequest) {
         this.cliente = cliente;

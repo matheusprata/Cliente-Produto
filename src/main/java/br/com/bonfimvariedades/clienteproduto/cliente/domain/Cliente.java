@@ -32,11 +32,6 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID idCliente;
-
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
-	@JsonIgnore
-	List<Pedido> pedidos;
-
 	@Enumerated(EnumType.STRING)
 	private TipoPessoa tipoPessoa = TipoPessoa.FISICA;
 	private String nomeCompleto;
@@ -53,9 +48,12 @@ public class Cliente {
 	@Column(name = "cpf", unique = true, updatable = false)
 	private String cpf;
 	private Boolean aceitaTermos = true;
-	private LocalDate dataDoPedido;
 	private LocalDate dataUltimaAlteracao;
 	private LocalDate dataCadastro;
+
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente")
+	@JsonIgnore
+	List<Pedido> pedidos;
 
 	public Cliente(ClienteRequest clienteRequest) {
 		this.nomeCompleto = clienteRequest.getNomeCompleto().toUpperCase();

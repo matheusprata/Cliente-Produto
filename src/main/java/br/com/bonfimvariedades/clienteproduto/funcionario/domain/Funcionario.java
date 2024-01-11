@@ -22,15 +22,6 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFuncionario;
-
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
-    @JsonIgnore
-    private List<Orcamento> orcamentos;
-
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
-    @JsonIgnore
-    private List<Pedido> pedidos;
-
     private String nomeCompleto;
     private String cpf;
     private LocalDate dataNascimento;
@@ -43,6 +34,14 @@ public class Funcionario {
     private LocalDate dataDemissao;
     @Enumerated(EnumType.STRING)
     private StatusFuncionario statusFuncionario = StatusFuncionario.ATIVO;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @JsonIgnore
+    private List<Orcamento> orcamentos;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @JsonIgnore
+    private List<Pedido> pedidos;
 
     public Funcionario(FuncionarioResquest request) {
         this.nomeCompleto = request.getNomeCompleto().toUpperCase();

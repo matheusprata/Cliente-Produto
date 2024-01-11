@@ -32,6 +32,19 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idPedido;
+    private BigDecimal quantidadeProdutoPedido;
+    @Enumerated(EnumType.STRING)
+    private TipoPagamento tipoPagamento;
+    private BigDecimal valorEntrada;
+    private int desconto;
+    @Min(value = 1, message = "O valor mínimo é 1")
+    @Max(value = 12, message = "O valor máximo é 12")
+    private int quantidadeParcelas;
+    private BigDecimal valorFinal;
+    private LocalDate dataPedido = LocalDate.now();
+    private String observacao;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.DISPONIVEL;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -51,20 +64,6 @@ public class Pedido {
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pedido")
     @JsonIgnore
     private List<Pagamento> pagamentos;
-
-    private BigDecimal quantidadeProdutoPedido;
-    @Enumerated(EnumType.STRING)
-    private TipoPagamento tipoPagamento;
-    private BigDecimal valorEntrada;
-    private int desconto;
-    @Min(value = 1, message = "O valor mínimo é 1")
-    @Max(value = 12, message = "O valor máximo é 12")
-    private int quantidadeParcelas;
-    private BigDecimal valorFinal;
-    private LocalDate dataPedido = LocalDate.now();
-    private String observacao;
-    @Enumerated(EnumType.STRING)
-    private Status status = Status.DISPONIVEL;
 
     public Pedido(Cliente cliente, Produto produto, Funcionario funcionario, PedidoRequest pedidoRequest) {
         this.cliente = cliente;

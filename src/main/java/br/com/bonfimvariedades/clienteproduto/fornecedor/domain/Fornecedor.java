@@ -26,11 +26,6 @@ public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idFornecedor;
-
-    @ManyToMany(mappedBy = "fornecedores")
-    @JsonIgnore
-    private List<Produto> produtos = new ArrayList<>();
-
     private String nomeEmpresa;
     private String nomeCompleto;
     @NotBlank(message = "Campo Obrigatório!")
@@ -44,6 +39,10 @@ public class Fornecedor {
     private Categoria categoria;
     @Enumerated(EnumType.STRING)
     private StatusFornecedor statusFornecedor = StatusFornecedor.ATIVO;
+
+    @ManyToMany(mappedBy = "fornecedores")
+    @JsonIgnore
+    private List<Produto> produtos = new ArrayList<>();
 
     public Fornecedor(FornecedorRequest request) {
         this.nomeEmpresa = request.getNomeEmpresa().toUpperCase();
