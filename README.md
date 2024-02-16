@@ -23,3 +23,6 @@ git clone https://github.com/matheusprata/Cliente-Produto.git
 ```
 http://localhost:8080/cliente-produto/api/public/swagger-ui/index.html
 ```
+
+## Diagrama Entidade Relacionamento
+![cliente produto](https://github.com/matheusprata/Cliente-Produto/assets/103780607/d1047b47-441d-4dae-befe-609dcc7b3cd1)
